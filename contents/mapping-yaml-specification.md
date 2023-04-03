@@ -162,10 +162,10 @@ If no combiner is specified on a <a>`PropertyPathMapping`</a> the <a>default com
 
 #### Default `Combiner`
 
-The default `combiner`takes
+<!-- The default `combiner`takes
   1. takes the <a>property-path-mapping-result</a> of the previous <a>property path mapping</a> in the <a>property-path-mapping-sequence</a>, if it exists.<br> 
   If that <a>property-path-mapping-result</a> is non-null, then the combiner returns that value as the <a>property-mapping-result</a>
-  2. if it doesn't exist, or is null, the combiner applies 1
+  2. if it doesn't exist, or is null, the combiner applies 1 -->
 
 ### `Transform`
 

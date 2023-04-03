@@ -1,6 +1,6 @@
 # Representing models for orchestration
 
-To make the IMX mapping and orchestration independent of underlying modeling standards and implementations, a simple internal logical data model representation is used, to which an source model must be mapped.
+To make the IMX mapping and orchestration independent of underlying modeling standards and implementations, a simple internal logical data model representation is used, to which a source model must be mapped.
 
 <aside class="note">
 The mapping itself is left as an implementation detail.
