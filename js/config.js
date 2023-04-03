@@ -1,4 +1,5 @@
 let respecConfig = {
+  // preProcess: [loadYamlLang],
   useLogo: true,
   useLabel: true,
   //default voor Geonovum is cc-by, eventueel is het mogelijk een andere licentie (cc0 of cc-by-nd) hier te kiezen voor het document.
@@ -41,6 +42,4 @@ let respecConfig = {
           uri: "template.pdf",
       },
   ],
-  
-  // preProcess: [loadYamlLang],
 };

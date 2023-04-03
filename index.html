@@ -11,7 +11,7 @@
         require(["core/worker"], ({ worker }) => resolve(worker));
       });
       const action = "highlight-load-lang";
-      const langURL = new URL("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/yaml.min.js").href;
+      const langURL = new URL("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/yaml.min.js").href;
       // this needs to match the name of the property created in highlight js for the language
       const propName = "yaml";
       const lang = "yaml"; // check what this should be 

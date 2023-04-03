@@ -6,7 +6,7 @@ To make the IMX mapping and orchestration independent of underlying modeling sta
 The mapping itself is left as an implementation detail.
 </aside>
 
-![Model representation for orchestration](/media/model.drawio.png "Model representation for orchestration")
+![Model representation for orchestration](media/model.drawio.png "Model representation for orchestration")
 
 ## Model (`Model`)
 

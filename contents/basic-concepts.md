@@ -4,7 +4,7 @@ The IMX model mapping plays an important role in the reference architecture of t
 
 The IMX model mapping is the core of what drives the orchestration process that will handle requests to the target API.
 
-![IMX Orchestration](/media/orchestration.drawio.png "IMX Orchestration")
+![IMX Orchestration](media/orchestration.drawio.png "IMX Orchestration")
 
 The default way of expressing a model mapping is in [[YAML]] format. In recent years, [[YAML]] has emerged as a concise, readable format to represent information, which is widely applied as a configuration file format.
 
