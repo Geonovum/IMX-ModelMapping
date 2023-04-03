@@ -6,7 +6,7 @@ let respecConfig = {
   specStatus: "WV",
   specType: "ST",
   pubDomain: "wau",
-  shortName: "NL-ReSpec-GN-template",
+  shortName: "WaU-MAP",
   publishDate: "2023-04-03",
   //eventueel is het mogelijk een versienummer mee te geven, maar bij Geonovum werken we standaard alleen met datum als onderdeel van de permanente URI.
   //publishVersion: "0.0.2",
