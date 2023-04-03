@@ -1,6 +1,6 @@
 # Mapping abstract model
 
-![IMX Model Mapping](/media/imx-mapping-model.drawio.png "IMX Model Mapping")
+![IMX Model Mapping](media/imx-mapping-model.drawio.png "IMX Model Mapping")
 
 ## Source model (`SourceModel`)
 
