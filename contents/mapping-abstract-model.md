@@ -4,11 +4,11 @@
 
 ## Source model (`SourceModel`)
 
-A <dfn>source model</dfn> is a <a>model</a> which is used to define the structure of <a>data elements</a> in a <a>source data source</a> in an IMX orchestration process.
+A <dfn>source model</dfn> is a [=model=] which is used to define the structure of [=data elements=] in a [=source data source=] in an IMX orchestration process.
 
 ## Target model (`TargetModel`)
 
-A <dfn>target model</dfn> is a <a>model</a> which is used to define the structure of <a>data elements</a> in the <a>target data source</a> in an IMX orchestration process.
+A <dfn>target model</dfn> is a [=model=] which is used to define the structure of [=data elements=] in the [=target data source=] in an IMX orchestration process.
 
 ## Model mapping (`ModelMapping`)
 
@@ -18,53 +18,53 @@ _Overview relations_
 
 | Name              | Cardinality | Definition                                            |
 |-------------------|-------------|-------------------------------------------------------|
-| sourceModel       | 1..*        | A relation pointing to a <a>source model</a>.         |
-| targetModel       | 1..1        | A relation pointing to a <a>target model</a>.         |
-| objectTypeMapping | 0..*        | A relation pointing to an <a>object type mapping</a>. |
+| sourceModel       | 1..*        | A relation pointing to a [=source model=].         |
+| targetModel       | 1..1        | A relation pointing to a [=target model=].         |
+| objectTypeMapping | 0..*        | A relation pointing to an [=object type mapping=]. |
 
 ## Object type mapping (`ObjectTypeMapping`)
 
-An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more <a>source model</a> based <a>data elements</a> to a target-model-object-type-based <a>data object</a>.
+An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [=data elements=] to a target-model-object-type-based [=data object=].
 
 _Overview attributes_
 
 | Name              | Cardinality | Definition                                                                                              |
 |-------------------|-------------|---------------------------------------------------------------------------------------------------------|
-| objectTypeName    | 0..*        | The name of the <a>object type</a> in the target model which is the target of this object type mapping. |
+| objectTypeName    | 0..*        | The name of the [=object type=] in the target model which is the target of this object type mapping. |
 
 _Overview relations_
 
 | Name              | Cardinality | Definition                                            |
 |-------------------|-------------|-------------------------------------------------------|
-| sourceModel       | 1..*        | A relation pointing to a <a>source model</a>.         |
-| targetModel       | 1..1        | A relation pointing to a <a>target model</a>.         |
-| objectTypeMapping | 0..*        | A relation pointing to an <a>object type mapping</a>. |
+| sourceModel       | 1..*        | A relation pointing to a [=source model=].         |
+| targetModel       | 1..1        | A relation pointing to a [=target model=].         |
+| objectTypeMapping | 0..*        | A relation pointing to an [=object type mapping=]. |
 
 ## Property mapping (`PropertyMapping`)
 
-A <dfn>property mapping</dfn> is a set of declarations which express the mapping of a target <a>object type</a> <a>property</a> within an <a>object type mapping</a>.
+A <dfn>property mapping</dfn> is a set of declarations which express the mapping of a target [=object type=] [=property=] within an [=object type mapping=].
 
 _Overview attributes_
 
 | Name         | Cardinality | Definition                                                                                             |
 |--------------|-------------|--------------------------------------------------------------------------------------------------------|
-| propertyName | 0..*        | The name of the <a>property</a> in the target model which is the target of this property type mapping. |
+| propertyName | 0..*        | The name of the [=property=] in the target model which is the target of this property type mapping. |
 
 _Overview relations_
 
 | Name              | Cardinality | Definition                                                              |
 |-------------------|-------------|-------------------------------------------------------------------------|
-| pathMappings      | 0..*        | An ordered list of relations pointing to a <a>property path mapping</a>. |
+| pathMappings      | 0..*        | An ordered list of relations pointing to a [=property path mapping=]. |
 
 ## Property Path mapping (`PropertyPathMapping`)
 
-A <dfn>property path mapping</dfn> is a set of declarations which express a reference to a <a>>data element</a> of an <a>information object</a> of a <a>source data source</a>.
+A <dfn>property path mapping</dfn> is a set of declarations which express a reference to a [=>data element=] of an [=information object=] of a [=source data source=].
 
 _Overview relations_
 
 | Name | Cardinality | Definition                                     |
 |------|-------------|------------------------------------------------|
-| path | 0..*        | A relation pointing to a <a>property path</a>. |
+| path | 0..*        | A relation pointing to a [=property path=]. |
 
 ## Property path (`PropertyPath`)
 
@@ -76,7 +76,7 @@ _Overview attributes_
 
 | Name     | Cardinality | Definition                                                                                              |
 |----------|-------------|---------------------------------------------------------------------------------------------------------|
-| segments | 1..1        | An ordered list of <a>segment</a> strings .... |
+| segments | 1..1        | An ordered list of [=segment=] strings .... |
 
 ## Combiner (`Combiner`)
 
