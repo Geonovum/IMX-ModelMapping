@@ -88,14 +88,7 @@ A <dfn>key/value `PropertyPathMapping` node</dfn> MUST have one `paths` or `path
  
 A string scalar `PropertyPathMapping` node is a [=property path expression=].
 
-A <dfn data-lt="property path expressions">property path expression</dfn> is a [generic string](https://yaml.org/spec/1.2.2/#10113-generic-string) [scalar node](https://yaml.org/spec/1.2.2/#scalar) that expresses a [=property path=]. [=Segments=] of the [=property path=] are separated by a `/` character.
-
-<aside class="issue">
-We probably need a more formal description of which characters are allowed in a [=property path expression=].
-</aside>
-
 A [=key/value `PropertyPathMapping` node=] MUST have zero or one `combiner` key, whose value is a [=combiner=].
-
 
 A [=key/value `PropertyPathMapping` node=] MUST have zero or one `transform` key, whose value is a [=transform=].
 
@@ -119,9 +112,23 @@ A [=key/value `PropertyPathMapping` node=] MUST have zero or one `transform` key
   ```
 </aside>
 
+### `PropertyPath`
+
+A property path node expresses a [=property path=]. It is represented by a [mapping node](https://yaml.org/spec/1.2.2/#mapping), or a [=property path expression=].
+
+A <dfn>mapping-node-property-path</dfn> MUST have exactly one `expression` key, whose value is a [`property path expression`].
+
+A [=mapping-node-property-path=] MUST have zero or one `combiner` key, whose value is a [=combiner=].
+
+A <dfn data-lt="property path expressions">property path expression</dfn> is a [generic string](https://yaml.org/spec/1.2.2/#10113-generic-string) [scalar node](https://yaml.org/spec/1.2.2/#scalar) that expresses a [=property path=]. [=Segments=] of the [=property path=] are separated by a `/` character.
+
+<aside class="issue">
+We probably need a more formal description of which characters are allowed in a [=property path expression=].
+</aside>
+
 ### `Combiner`
 
-A `Combiner` is a function that takes the [=property-path-mapping-result=] of the previous [=property path mapping=] in the [=property-path-mapping-sequence=], and the result of the [=property-path-mapping-result=] on which it is declared, and applies the defined function on these.
+A `Combiner` expresses a [=combiner=].
 
 If no combiner is specified on a [=`PropertyPathMapping`=] the [=default combiner=] is applied.
 
@@ -160,12 +167,66 @@ If no combiner is specified on a [=`PropertyPathMapping`=] the [=default combine
   ```
 </aside>
 
-#### Default `Combiner`
 
-<!-- The default `combiner`takes
-  1. takes the [=property-path-mapping-result=] of the previous [=property path mapping=] in the [=property-path-mapping-sequence=], if it exists.<br> 
-  If that [=property-path-mapping-result=] is non-null, then the combiner returns that value as the [=property-mapping-result=]
-  2. if it doesn't exist, or is null, the combiner applies 1 -->
+#### Default `combiner`
+
+The <dfn>default `combiner`</dfn> is a the `coalesce` combiner.
+
+The [=default combiner=] takes the previous result in the sequence, if it exists.
+  - If that result is non-null, then the combiner returns that value as the result.
+  - otherwise the combiner evalueates the current value in the sequence.
+
+The last combiner in a sequence will always return its result.
+
+The following example:
+
+<aside class="example" title="combiner">
+
+  ```yaml
+  objectTypeMappings:
+    Address:
+      sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        fullAddress:
+          pathMappings:
+            - path: postcode
+              combiner:
+                name: concat
+                prefix: ' '
+            - paths:
+                - ligtIn/naam
+                - ligtAan/ligtIn/naam
+              combiner:
+                name: concat
+                prefix: ' '
+  ```
+</aside>
+
+is equivalent to:
+
+<aside class="example" title="combiner">
+
+  ```yaml
+  objectTypeMappings:
+    Address:
+      sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        fullAddress:
+          pathMappings:
+            - path: postcode
+              combiner:
+                name: concat
+                prefix: ' '
+            - paths:
+                - expression: ligtIn/naam
+                  combiner: coalesce
+                - expression: ligtAan/ligtIn/naam
+                  combiner: coalesce
+              combiner:
+                name: concat
+                prefix: ' '
+  ```
+</aside>
 
 ### `Transform`
 

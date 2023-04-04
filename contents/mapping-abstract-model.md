@@ -82,14 +82,29 @@ _Overview attributes_
 |----------|-------------|-------------------------------------------------------|
 | segments | 1..*        | An ordered, nonunique sequence of [=segment=] strings |
 
+_Overview relations_
+
+| Name      | Cardinality | Definition                                                                       |
+|-----------|-------------|----------------------------------------------------------------------------------|
+| combiner  | 0..1        | A relation pointing to a [=combiner=].                                           |
+
 ## Combiner (`Combiner`)
 
-A <dfn>combiner</dfn> is a function which takes ...
+A <dfn>combiner</dfn> is a function which takes as input the result of a previous element in a sequence and combines it with the current element in the sequence.
 
-<aside class="issue">
+_Overview attributes_
 
-</aside>  
+| Name | Cardinality | Definition                |
+|------|-------------|---------------------------|
+| name | 1..1        | The name of the combiner. |
+
 
 ## Transform (`Transform`)
 
-A <dfn data-lt="transforms">transform</dfn> is a function which takes ...
+A <dfn data-lt="transforms">transform</dfn> is a function which takes the result of a [=property path mapping evaluation=] and transforms it to a new result.
+
+_Overview attributes_
+
+| Name | Cardinality | Definition                |
+|------|-------------|---------------------------|
+| name | 1..1        | The name of the combiner. |

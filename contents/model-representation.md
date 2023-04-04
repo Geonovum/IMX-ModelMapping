@@ -3,7 +3,7 @@
 To make the IMX mapping and orchestration independent of underlying modeling standards and implementations, a simple internal logical data model representation is used, to which a source model must be mapped.
 
 <aside class="note">
-The mapping itself is left as an implementation detail.
+The mapping to the IMX internal logical data model is left as an implementation detail.
 </aside>
 
 ![Model representation for orchestration](media/model.drawio.png "Model representation for orchestration")
