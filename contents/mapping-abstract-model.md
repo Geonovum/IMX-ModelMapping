@@ -16,8 +16,8 @@ A <dfn>model mapping</dfn> is a set of declarations which afford the combination
 
 _Overview relations_
 
-| Name              | Cardinality | Definition                                            |
-|-------------------|-------------|-------------------------------------------------------|
+| Name              | Cardinality | Definition                                         |
+|-------------------|-------------|----------------------------------------------------|
 | sourceModel       | 1..*        | A relation pointing to a [=source model=].         |
 | targetModel       | 1..1        | A relation pointing to a [=target model=].         |
 | objectTypeMapping | 0..*        | A relation pointing to an [=object type mapping=]. |
@@ -28,14 +28,14 @@ An <dfn>object type mapping</dfn> is a set of declarations which express the map
 
 _Overview attributes_
 
-| Name              | Cardinality | Definition                                                                                              |
-|-------------------|-------------|---------------------------------------------------------------------------------------------------------|
+| Name              | Cardinality | Definition                                                                                           |
+|-------------------|-------------|------------------------------------------------------------------------------------------------------|
 | objectTypeName    | 0..*        | The name of the [=object type=] in the target model which is the target of this object type mapping. |
 
 _Overview relations_
 
-| Name              | Cardinality | Definition                                            |
-|-------------------|-------------|-------------------------------------------------------|
+| Name              | Cardinality | Definition                                         |
+|-------------------|-------------|----------------------------------------------------|
 | sourceModel       | 1..*        | A relation pointing to a [=source model=].         |
 | targetModel       | 1..1        | A relation pointing to a [=target model=].         |
 | objectTypeMapping | 0..*        | A relation pointing to an [=object type mapping=]. |
@@ -46,42 +46,50 @@ A <dfn>property mapping</dfn> is a set of declarations which express the mapping
 
 _Overview attributes_
 
-| Name         | Cardinality | Definition                                                                                             |
-|--------------|-------------|--------------------------------------------------------------------------------------------------------|
+| Name         | Cardinality | Definition                                                                                          |
+|--------------|-------------|-----------------------------------------------------------------------------------------------------|
 | propertyName | 0..*        | The name of the [=property=] in the target model which is the target of this property type mapping. |
 
 _Overview relations_
 
-| Name              | Cardinality | Definition                                                              |
-|-------------------|-------------|-------------------------------------------------------------------------|
-| pathMappings      | 0..*        | An ordered list of relations pointing to a [=property path mapping=]. |
+| Name        | Cardinality | Definition                                                                               |
+|-------------|-------------|------------------------------------------------------------------------------------------|
+| pathMapping | 0..*        | A relation that results in an ordered, nonunique sequence of [=property path mappings=]. |
 
 ## Property Path mapping (`PropertyPathMapping`)
 
-A <dfn>property path mapping</dfn> is a set of declarations which express a reference to a [=>data element=] of an [=information object=] of a [=source data source=].
+A <dfn data-lt="property path mappings">property path mapping</dfn> is a set of declarations which express a reference to a [=data element=] of an [=information object=] of a [=source data source=].
 
 _Overview relations_
 
-| Name | Cardinality | Definition                                     |
-|------|-------------|------------------------------------------------|
-| path | 0..*        | A relation pointing to a [=property path=]. |
+| Name      | Cardinality | Definition                                                                       |
+|-----------|-------------|----------------------------------------------------------------------------------|
+| path      | 0..*        | A relation that results in an ordered, nonunique sequence of [=property paths=]. |
+| combiner  | 0..1        | A relation pointing to a [=combiner=].                                           |
+| transform | 0..*        | A relation that results in an ordered, nonunique sequence of [=transforms=].     |
 
 ## Property path (`PropertyPath`)
 
-A <dfn>property path</dfn> is ...
+A <dfn data-lt="property paths">property path</dfn> is a set of declarations which, conceptually, represent a possible route through a graph of data elements. A [=property path=] is comprised of an ordered, nonunique sequence of [=segments=]. Each segment represents a step in that route.
 
-A <dfn data-lt="segments">segment</dfn> is ...
+A <dfn data-lt="segments">segment</dfn> is a string that represents a [=property reference=].
+
+A <dfn>property reference</dfn> is a string that matches the name of a [=property=] in a [=data element=] in a [=source data source=].
 
 _Overview attributes_
 
-| Name     | Cardinality | Definition                                                                                              |
-|----------|-------------|---------------------------------------------------------------------------------------------------------|
-| segments | 1..1        | An ordered list of [=segment=] strings .... |
+| Name     | Cardinality | Definition                                            |
+|----------|-------------|-------------------------------------------------------|
+| segments | 1..*        | An ordered, nonunique sequence of [=segment=] strings |
 
 ## Combiner (`Combiner`)
 
-A <dfn>combiner</dfn> is a function which takes
+A <dfn>combiner</dfn> is a function which takes ...
+
+<aside class="issue">
+
+</aside>  
 
 ## Transform (`Transform`)
 
-A <dfn>transform</dfn> is a function which takes
+A <dfn data-lt="transforms">transform</dfn> is a function which takes ...
