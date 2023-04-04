@@ -170,7 +170,7 @@ If no combiner is specified on a [=`PropertyPathMapping`=] the [=default combine
 
 #### Default `combiner`
 
-The <dfn>default `combiner`</dfn> is a the `coalesce` combiner.
+The <dfn>default `combiner`</dfn> is the `coalesce` combiner.
 
 The [=default combiner=] takes the previous result in the sequence, if it exists.
   - If that result is non-null, then the combiner returns that value as the result.
