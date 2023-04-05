@@ -105,6 +105,6 @@ A <dfn data-lt="transforms">transform</dfn> is a function which takes the result
 
 _Overview attributes_
 
-| Name | Cardinality | Definition                |
-|------|-------------|---------------------------|
-| name | 1..1        | The name of the combiner. |
+| Name | Cardinality | Definition                 |
+|------|-------------|----------------------------|
+| name | 1..1        | The name of the transform. |
