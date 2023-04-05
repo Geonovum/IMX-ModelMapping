@@ -53,9 +53,22 @@ A <dfn>property</dfn> is a predicate which is used to express a [=data element=]
 
 _Overview attributes_
 
-| Name | Cardinality | Definition                |
-|------|-------------|---------------------------|
-| name | 1..1        | The name of the property. |
+| Name         | Cardinality | Definition                                      |
+|--------------|-------------|-------------------------------------------------|
+| name         | 1..1        | The name of the property.                       |
+| isIdentifier | 1..1        | Indication whether the property is identifying. |
+| cardinality  | 1..1        | The [=cardinality=] of the property.            |
+
+### Cardinality (`Cardinality`)
+
+A <dfn>cardinality</dfn> is an enumeration item which is used to express how many times a [=data element=] with the same [=property=], and the same subject, can be expected to occur.
+
+_Overview enumeration items_
+| Name     | Definition                |
+|----------|---------------------------|
+| required | Occurs exactly once.      |
+| optional | Can occur at most once.   |
+| multi    | Can occur multiple times. |
 
 ### Relation (`Relation`)
 
@@ -77,9 +90,9 @@ _Overview relations_
 |-------------------|-------------|--------------------------------------------------------------------------------------------------------------|
 | type              | 1..1        | The [=attribute type=] that is the type of the value of the [=data element=] expressing the attribute. |
 
-## Attribute type (`AttributeType`)
+## Value type (`ValueType`)
 
-An <dfn>attribute type</dfn> is a type of an [=attribute=]-expressing [=data element=].
+A <dfn>value type</dfn> is a type of an [=attribute=]-expressing [=data element=].
 
 _Overview attributes_
 
@@ -89,9 +102,13 @@ _Overview attributes_
 
 ### Scalar type (`ScalarType`)
 
-A <dfn>scalar type</dfn> is a [=attribute type=] which is a scalar.
+A <dfn>scalar type</dfn> is a [=value type=] which is a scalar.
 
 Common examples of scalars are:
 * String
 * Integer
 * Boolean
+
+### Geometry type (`GeometryType`)
+
+A <dfn>geometry type</dfn> is a [=value type=] which represents a geometry.
