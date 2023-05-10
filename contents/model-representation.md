@@ -88,7 +88,7 @@ _Overview relations_
 
 | Name              | Cardinality | Definition                                                                                                   |
 |-------------------|-------------|--------------------------------------------------------------------------------------------------------------|
-| type              | 1..1        | The [=attribute type=] that is the type of the value of the [=data element=] expressing the attribute. |
+| type              | 1..1        | The [=value type=] that is the type of the value of the [=data element=] expressing the attribute. |
 
 ## Value type (`ValueType`)
 
@@ -98,7 +98,7 @@ _Overview attributes_
 
 | Name | Cardinality | Definition                      |
 |------|-------------|---------------------------------|
-| name | 1..1        | The name of the attribute type. |
+| name | 1..1        | The name of the value type. |
 
 ### Scalar type (`ScalarType`)
 
