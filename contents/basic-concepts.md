@@ -1,8 +1,18 @@
 # Basic concepts
 
-The IMX model mapping plays an important role in the reference architecture of the IMX orchestration process. The mapping serves as a translation from one or more source model based API data sources towards a target model based API data source.
+The IMX model mapping plays an important role in the reference architecture of the [=IMX orchestration process=]. The mapping serves as a translation from one or more source model based API data sources towards a target model based API data source.
 
-The IMX model mapping is the core of what drives the orchestration process that will handle requests to the target API.
+The IMX model mapping is the core of what drives the [=orchestration process=] that will handle requests to the target API.
+
+The <dfn data-lt="orchestration process">IMX orchestration process</dfn> is an activity which can answer requests on a [=target data source=], generated in accordance with a [=target model=], by orchestrating requests on the underlying [=source data sources=], which correspond with [=source models=], driven by a [=IMX model mapping=], combining the results.
+
+The [=orchestration process=] is carried out by an [=IMX orchestration engine=]. An <dfn>IMX orchestration engine</dfn> is a software component which takes an [=IMX model mapping=], one or more [=source models=] and [=source data sources=], and a [=target model=], and generates a [=target data source=] in accordance with the [=target model=] which carries out he [=orchestration process=].
+
+A <dfn>data source</dfn> is an entity which provides access to a dataset.
+
+A <dfn>source data source</dfn> is a [=data source=] which acts as a source in an [=orchestration process=].
+
+A <dfn>target data source</dfn> is a [=data source=] which acts as the target in an [=orchestration process=].
 
 ![IMX Orchestration](media/orchestration.drawio.png "IMX Orchestration")
 
@@ -21,25 +31,30 @@ The default way of expressing a model mapping is in [[YAML]] format. In recent y
         locatorDesignator:
           pathMappings:
             - path: huisnummer
-              transform: toString
             - path: huisnummertoevoeging
-              combiner:
-                name: concat
-                prefix: ' '
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
             - path: huisletter
-              combiner:
-                name: concat
-                prefix: ' '
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
+          combine:
+            type: join
         postCode:
-          pathMapping:
+          pathMappings:
             path: postcode
         postName:
-          pathMapping:
-            paths:
-              - ligtIn/naam
-              - ligtAan/ligtIn/naam
+          pathMappings:
+            path: ligtIn/naam
+            andThen:
+              ifMatch:
+                type: isNull
+              path: ligtAan/ligtIn/naam
         thoroughfare:
-          pathMapping:
+          pathMappings:
             path: ligtAan/naam
   ```
 </aside>

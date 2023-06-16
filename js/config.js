@@ -42,4 +42,7 @@ let respecConfig = {
           uri: "template.pdf",
       },
   ],
+
+  // automatically pluralize definitions
+  pluralize: true,
 };

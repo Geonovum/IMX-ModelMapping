@@ -10,6 +10,7 @@ A [=YAML IXM Model Mapping document=] MUST be encoded in [[UTF-8]].
 
 ### `ModelMapping`
 The root node of a mapping document represents the [=model mapping=].
+A `ModelMapping` node MUST express exactly one `sourceModels` key, of which the value is a map of [=sourcemodel=] nodes.
 
 A `ModelMapping` node MUST express zero or one `objectTypeMappings` key, of which the value is a map of [=object type mapping=] nodes.
 
@@ -20,8 +21,9 @@ What is the behavior when no `objectTypeMappings` key is expressed? This might b
 <aside class="example" title="model mapping root node">
 
   ```yaml
-  sourceModels: ... # TODO
-  targetModel: ... # TODO
+  sourceModels: ...
+  targetModel: ...
+  pathMappings: ...
   objectTypeMappings: ...
   ```
 </aside>
@@ -30,7 +32,7 @@ What is the behavior when no `objectTypeMappings` key is expressed? This might b
 
 <aside class="issue">TODO: Still to be worked out in following high 5s</aside>
 
-A <dfn>model alias</dfn> is a string which defines an alias which can be used to define a [=source root=], or in [=property path expressions=].
+<!-- A <dfn>model alias</dfn> is a string which defines an alias which can be used to define a [=source root=], or in [=property path expressions=]. -->
 
 ### `TargetModel`
 
@@ -40,7 +42,7 @@ A <dfn>model alias</dfn> is a string which defines an alias which can be used to
 
 An `ObjectTypeMapping` node expresses an [=object type mapping=]. It is represented by a [key/value pair](https://yaml.org/spec/1.2.2/#mapping) within the [mapping node](https://yaml.org/spec/1.2.2/#mapping) that is the value of the `objectTypeMappings` key. The key in the [key/value pair](https://yaml.org/spec/1.2.2/#mapping) is the `objectTypeName` of the [=object type mapping=].
 
-An `ObjectMapping` node MUST have a `sourceRoot` key, whose value is a [=object type reference=]. A <dfn>source root</dfn> defines the object type of the root node of a [=property path=].
+An `ObjectMapping` node MUST have a `sourceRoot` key, which represents the [=source root=] and whose value is a [=object type reference=].
 
 An <dfn>object type reference</dfn> is a string with the following pattern `{modelAlias}:{objectTypeName}`, where `{modelAlias}` is the [=model alias=] of a source model, and `{objectTypeName}` is the name of the [=object type=] in that source model.
 
@@ -120,7 +122,7 @@ A <dfn>mapping-node-property-path</dfn> MUST have exactly one `expression` key, 
 
 A [=mapping-node-property-path=] MUST have zero or one `combiner` key, whose value is a [=combiner=].
 
-A <dfn data-lt="property path expressions">property path expression</dfn> is a [generic string](https://yaml.org/spec/1.2.2/#10113-generic-string) [scalar node](https://yaml.org/spec/1.2.2/#scalar) that expresses a [=property path=]. [=Segments=] of the [=property path=] are separated by a `/` character.
+A <dfn>property path expression</dfn> is a [generic string](https://yaml.org/spec/1.2.2/#10113-generic-string) [scalar node](https://yaml.org/spec/1.2.2/#scalar) that expresses a [=property path=]. [=Segments=] of the [=property path=] are separated by a `/` character.
 
 <aside class="issue">
 We probably need a more formal description of which characters are allowed in a [=property path expression=].
@@ -141,7 +143,7 @@ If no combiner is specified on a [=`PropertyPathMapping`=] the [=default combine
       propertyMappings:
         fullAddress:
           pathMappings:
-            - ligtAan/naam
+            - path: ligtAan/naam
             - path: huisnummer
               combiner:
                 name: concat
@@ -161,9 +163,12 @@ If no combiner is specified on a [=`PropertyPathMapping`=] the [=default combine
             - paths:
                 - ligtIn/naam
                 - ligtAan/ligtIn/naam
-              combiner:
+              map:
                 name: concat
-                prefix: ' '
+                options:
+                  prefix: ' '
+          combine:
+            name: join
   ```
 </aside>
 
