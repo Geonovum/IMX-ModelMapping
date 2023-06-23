@@ -18,6 +18,9 @@ _Overview relations_
 
 | Name              | Multiplicity | Definition                                                |
 |-------------------|--------------|-----------------------------------------------------------|
+| targetModel       | 1..1         | A relation pointing to a [=target model=].                |
+| sourceModel       | 0..*         | A relation pointing to a [=source model=].                |
+| sourceRelation    | 0..*         | A relation pointing to a [=source relation mapping=].     |
 | objectTypeMapping | 1..*         | A relation pointing to an [=object type mapping=].        |
 | pathMapping       | 0..*         | A relation pointing to a reusable named [=path mapping=]. |
 
@@ -44,6 +47,19 @@ _Overview relations_
 |-------------|--------------|-----------------------------------------------|
 | type        | 1..1         | A relation pointing to a [=object type ref=]. |
 
+## Source relation mapping (`SourceRelationMapping`)
+
+A <dfn>source relation mapping</dfn> is a set of declarations which define a virtual relation between object types in one or more source models. Virtual, in that the relation does not actually exist in the source models, but exists for the mapping process, through this mapping.
+
+A relation defined through a [=source relation mapping=] can be used just as any other relation within [=object type mappings=].
+
+_Overview relations_
+
+| Name       | Multiplicity | Definition                                                                                           |
+|------------|--------------|------------------------------------------------------------------------------------------------------|
+| sourceType | 1..1         | A relation pointing to a [=object type ref=], indicating the source object type of the [=relation=]. |
+| property   | 0..*         | A relation pointing to a newly defined [=property=].                                                 |
+
 ## Object type mapping (`ObjectTypeMapping`)
 
 An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [=data elements=] to a target-model-object-type-based [=data object=].
@@ -67,6 +83,10 @@ _Overview relations_
 
 A <dfn>property mapping</dfn> is a set of declarations which express the mapping of a target [=object type=] [=property=] within an [=object type mapping=].
 
+A [=property mapping=] can be expressed through a sinlge [=path mapping=], or can be the result of a combination of [=path mappings=] by applying its specified combiner.
+
+<aside class="todo">TODO: default combiner??</aside>
+
 _Overview attributes_
 
 | Name         | Multiplicity | Definition                                                                                          |
@@ -82,9 +102,9 @@ _Overview relations_
 
 ## Path mapping (`PathMapping`)
 
-A <dfn>path mapping</dfn> is a set of declarations which express references to [=data elements=] of [=data objects=] of [=source data sources=] and actions on those..
+A <dfn>path mapping</dfn> is a set of declarations which express references to [=data elements=] of [=data objects=] of [=source data sources=] and actions on those.
 
-A <dfn>path mapping evaluation</dfn> is the evaluation of a [=path mapping=] yielding input for the [=property mapping=].
+A <dfn>path mapping evaluation</dfn> is the evaluation of a [=path mapping=] yielding a <dfn>path mapping result</dfn>, which serves as input for the [=property mapping=].
 
 _Overview attributes_
 
@@ -94,18 +114,18 @@ _Overview attributes_
 
 _Overview relations_
 
-| Name         | Multiplicity | Definition                                                                                                                        |
-|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| path         | 1..1         | A relation that points to a [=path=].                                                                                             |
-| next         | 0..*         | A relation that results in an ordered, non-unique sequence of [=path mappings=] that are to be evaluated after this path mapping. |
-| resultMapper | 0..*         | A relation that results in an ordered, non-unique sequence of [=result mappers=].                                                 |
-| ifMatch      | 0..1         | A relation that points to a [=matcher=].                                                                                          |
-| ifMatchType  | 0..1         | A relation that points to a [=object type ref=].                                                                                  |
-| repeat       | 0..1         | A relation that points to a [=path repeat=].                                                                                      |
+| Name        | Multiplicity | Definition                                                                                                                        |
+|-------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| path        | 1..1         | A relation that points to a [=path=].                                                                                             |
+| andThen     | 0..*         | A relation that results in an ordered, non-unique sequence of [=path mappings=] that are to be evaluated after this path mapping. |
+| map         | 0..*         | A relation that results in an ordered, non-unique sequence of [=result mappers=].                                                 |
+| ifMatch     | 0..1         | A relation that points to a [=matcher=].                                                                                          |
+| ifMatchType | 0..1         | A relation that points to a [=object type ref=].                                                                                  |
+| repeat      | 0..1         | A relation that points to a [=path repeat=].                                                                                      |
 
 ## Path (`Path`)
 
-A <dfn>path</dfn> is a set of declarations which, conceptually, represent a possible route through a graph of data elements. A [=path=] is comprised of an ordered, non-unique sequence of [=segments=]. Each segment represents a step in that route.
+A <dfn data-lt="path expression">path</dfn>, or path expression, is a set of declarations which, conceptually, represent a possible route through a graph of data elements. A [=path=] is comprised of an ordered, non-unique sequence of [=segments=]. Each segment represents a step in that route.
 
 A <dfn>segment</dfn> is a string that represents a [=property reference=].
 

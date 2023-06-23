@@ -47,6 +47,29 @@ _Overview relations_
 | property          | 0..*         | A relation pointing to a [=property=].                                                           |
 | identityProperty  | 0..*         | A relation pointing to a [=property=] which is identifying for the property-bearing object type. |
 
+## Filter mapping (`FilterMapping`)
+
+A <dfn>filter mapping</dfn> speficies how to filter source objects matching the target object. 
+
+_Overview relations_
+
+| Name       | Multiplicity | Definition                                                                                                      |
+|------------|--------------|-----------------------------------------------------------------------------------------------------------------|
+| property   | 0..*         | A relation pointing to a target object's [=property=].                                                          |
+| operator   | 0..*         | A relation pointing to an [=operator=] which expresses a filter operation on the target object's [=property=] . |
+| sourcePath | 0..*         | A relation pointing to a [=path=] on the objects of the source =[object type=].                                 |
+
+
+## Filter Operator (`Filter Operator`)
+
+A <dfn data-lt="operator">filter operator</dfn> specifies which operation is to be used to filter the matching source objects.
+
+_Overview attributes_
+
+| Name | Multiplicity | Definition          |
+|------|--------------|---------------------|
+| type | 0..*         | The operator type . |
+
 ## Property (`Property`)
 
 A <dfn>property</dfn> is a predicate which is used to express a [=data element=] about an [=object=].
@@ -57,7 +80,7 @@ _Overview attributes_
 |---------------|--------------|-------------------------------------------------|
 | name          | 1..1         | The name of the property.                       |
 | isIdentifier  | 1..1         | Indication whether the property is identifying. |
-| multiplicity  | 1..1        | The [=multiplicity=] of the property.            |
+| multiplicity  | 1..1         | The [=multiplicity=] of the property.            |
 
 ### Multiplicity (`Multiplicity`)
 
@@ -74,11 +97,20 @@ _Overview enumeration items_
 
 A <dfn>relation</dfn> is a [=property=] which expresses a relationship between the relation-bearing [=object=] and a target [=object=]. It is a sub-type of [=Property=].
 
+_Overview attributes_
+
+| Name               | Multiplicity | Definition                                                                                                                    |
+|--------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------|
+| inverseName        | 1..1         | The inverse name of the [=relation=], to be used to traverse the relation in the inverse direction.                           |
+| inverseCardinality | 1..1         | The inverse cardinality of the [=relation=].                                                                                  |
+| keyMapping         | 0..1         | A map (String -> Object) defining the mapping the source [=object type=] key [=properties=] to the target key [=properties=]. |
+
 _Overview relations_
 
-| Name              | Multiplicity | Definition                                                 |
-|-------------------|-------------|------------------------------------------------------------|
-| target            | 0..*        | The [=object type=] that is the target of the relation. |
+| Name          | Multiplicity | Definition                                                                         |
+|---------------|--------------|------------------------------------------------------------------------------------|
+| target        | 0..*         | The [=object type=] that is the target of the relation.                            |
+| filterMapping | 0..*         | A relation pointing to a [=filter mapping=] to filter the matching source objects. |
 
 ### Attribute (`Attribute`)
 

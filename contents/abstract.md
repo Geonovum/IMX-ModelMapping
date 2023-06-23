@@ -1,1 +1,1 @@
-TODO
+This document speficies the IMX model mapping. The IMX model mapping expresses a mapping between one or more source data models, to a target data model, and is designed to be used as configuration for an IMX orchestration process.
