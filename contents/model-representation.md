@@ -57,7 +57,7 @@ _Overview relations_
 |------------|--------------|-----------------------------------------------------------------------------------------------------------------|
 | property   | 0..*         | A relation pointing to a target object's [=property=].                                                          |
 | operator   | 0..*         | A relation pointing to an [=operator=] which expresses a filter operation on the target object's [=property=] . |
-| sourcePath | 0..*         | A relation pointing to a [=path=] on the objects of the source =[object type=].                                 |
+| sourcePath | 0..*         | A relation pointing to a [=path=] on the objects of the source [=object type=].                                 |
 
 
 ## Filter Operator (`Filter Operator`)

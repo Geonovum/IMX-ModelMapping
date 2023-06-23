@@ -152,7 +152,7 @@ A <dfn>`PropertyMapping` node</dfn> expresses a [=property mapping=]. It is repr
 
 A [=PropertyMapping node=] MUST have one `pathMappings` or `pathMapping` key, whose value is a [sequence node](https://yaml.org/spec/1.2.2/#sequence), representing [=PathMapping nodes=], or a [mapping node](https://yaml.org/spec/1.2.2/#mapping), representing a [=PathMapping node=] respectively.
 
-The evaluation of the [=path papping=](s) SHOULD yield a [=path mapping result=] that matches the type of the [=property=] in the target model which is referenced by `propertyName`.
+The evaluation of the [=path mapping=]\(s) SHOULD yield a [=path mapping result=] that matches the type of the [=property=] in the target model which is referenced by `propertyName`.
 
 A [=PropertyMapping node=] MUST have zero or one `combine` key, whose value is a [=ResultCombiner node=]. 
 
