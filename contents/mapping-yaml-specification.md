@@ -135,8 +135,8 @@ An [=ObjectTypeMapping node=] MUST have zero or one `propertyMappings` key, whos
 objectTypeMappings:
 
   Address:
-    sourceRoot: bag:Nummeraanduiding
-    propertyMappings: ...
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings: ...
     
   Gebouw:
     - sourceRoot: bgt:Pand
