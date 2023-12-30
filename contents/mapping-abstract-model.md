@@ -62,13 +62,23 @@ _Overview relations_
 
 ## Object type mapping (`ObjectTypeMapping`)
 
-An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item)to a target-model-object-type-based [=data object=].
+An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) using its [=object type mapping sets=].
 
 _Overview attributes_
 
 | Name              | Multiplicity | Definition                                                                                           |
 |-------------------|--------------|------------------------------------------------------------------------------------------------------|
 | objectTypeName    | 0..*         | The name of the [=object type=] in the target model which is the target of this object type mapping. |
+
+_Overview relations_
+
+| Name            | Multiplicity | Definition                                            |
+|-----------------|--------------|-------------------------------------------------------|
+| mappingSet      | 1..*         | A relation pointing to a [=object type mapping set=]. |
+
+## Object type mapping set (`ObjectTypeMappingSet`)
+
+An <dfn>object type mapping set</dfn> is a set of declarations which express the mapping of one or more [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) using a specicic [=source root=] to a target-model-object-type-based [=data object=].
 
 _Overview relations_
 

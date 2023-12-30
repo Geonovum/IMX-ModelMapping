@@ -23,38 +23,38 @@ The default way of expressing a model mapping is in [[YAML]] format. In recent y
   ```yaml
   objectTypeMappings:
     Address:
-      sourceRoot: bag:Nummeraanduiding
-      propertyMappings:
-        addressID:
-          pathMappings:
-            path: identificatie
-        locatorDesignator:
-          pathMappings:
-            - path: huisnummer
-            - path: huisnummertoevoeging
-              map:
-                type: prepend
-                options:
-                  prefix: ' '
-            - path: huisletter
-              map:
-                type: prepend
-                options:
-                  prefix: ' '
-          combine:
-            type: join
-        postCode:
-          pathMappings:
-            path: postcode
-        postName:
-          pathMappings:
-            path: ligtIn/naam
-            andThen:
-              ifMatch:
-                type: isNull
-              path: ligtAan/ligtIn/naam
-        thoroughfare:
-          pathMappings:
-            path: ligtAan/naam
+      - sourceRoot: bag:Nummeraanduiding
+        propertyMappings:
+          addressID:
+            pathMappings:
+              path: identificatie
+          locatorDesignator:
+            pathMappings:
+              - path: huisnummer
+              - path: huisnummertoevoeging
+                map:
+                  type: prepend
+                  options:
+                    prefix: ' '
+              - path: huisletter
+                map:
+                  type: prepend
+                  options:
+                    prefix: ' '
+            combine:
+              type: join
+          postCode:
+            pathMappings:
+              path: postcode
+          postName:
+            pathMappings:
+              path: ligtIn/naam
+              andThen:
+                ifMatch:
+                  type: isNull
+                path: ligtAan/ligtIn/naam
+          thoroughfare:
+            pathMappings:
+              path: ligtAan/naam
   ```
 </aside>

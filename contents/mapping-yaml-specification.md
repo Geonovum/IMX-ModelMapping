@@ -25,12 +25,12 @@ What is the behavior when no `objectTypeMappings` key is expressed? This might b
 
 <aside class="example" title="model mapping root node">
 
-  ```yaml
-  sourceModels: ...
-  targetModel: ...
-  sourceRelations: ...
-  objectTypeMappings: ...
-  ```
+```yaml
+sourceModels: ...
+targetModel: ...
+sourceRelations: ...
+objectTypeMappings: ...
+```
 </aside>
 
 ### `SourceModel`
@@ -49,22 +49,22 @@ The [mapping node](https://yaml.org/spec/1.2.2/#mapping) MUST have:
 
 <aside class="example" title="source and target model specification">
 
-  ```yaml
-  sourceModels:
-    - bag: 
-        location: /models/bag/imbag.xml
-        profile: MIM
-    - bgt:
-        location: /models/imgeo/imgeo.xml
-        profile: MIM
-  
-  targetModel:
-    imx-geo:
-      location: /models/imx-geo/imx-geo.xml
+```yaml
+sourceModels:
+  - bag:
+      location: /models/bag/imbag.xml
+      profile: MIM
+  - bgt:
+      location: /models/imgeo/imgeo.xml
       profile: MIM
 
-  objectTypeMappings: ...
-  ```
+targetModel:
+  imx-geo:
+    location: /models/imx-geo/imx-geo.xml
+    profile: MIM
+
+objectTypeMappings: ...
+```
 </aside>
 
 ### `SourceRelation`
@@ -115,29 +115,35 @@ It MUST have a `type` key with a string value indicating the type of operator.
 
 ### `ObjectTypeMapping`
 
-An <dfn>`ObjectTypeMapping` node</dfn> expresses an [=object type mapping=]. It is represented by a [key/value pair](https://yaml.org/spec/1.2.2/#mapping) within the [mapping node](https://yaml.org/spec/1.2.2/#mapping) that is the value of the `objectTypeMappings` key. The key in the [key/value pair](https://yaml.org/spec/1.2.2/#mapping) is the `objectTypeName` of the [=object type mapping=].
+An <dfn>`ObjectTypeMapping` node</dfn> expresses an [=object type mapping=]. It is represented by a [key/value pair](https://yaml.org/spec/1.2.2/#mapping) within the [mapping node](https://yaml.org/spec/1.2.2/#mapping) that is the value of the `objectTypeMappings` key. The key in the [key/value pair](https://yaml.org/spec/1.2.2/#mapping) is the `objectTypeName` of the [=object type mapping=]. The value in the [key/value pair](https://yaml.org/spec/1.2.2/#mapping) is a [sequence node](https://yaml.org/spec/1.2.2/#sequence) that represents the set of [=object type mapping sets=] of which each item is a[=ObjectTypeMappingSet node=]
 
-An [=ObjectTypeMapping node=] MUST have a `sourceRoot` key, which represents the [=source root=] and whose value is a [sequence node](https://yaml.org/spec/1.2.2/#sequence) of [=SourceRoot node=]s. 
+<aside class="note">
+Note that the `mappingSets` relation from the [=object type mapping=] is implicit.
+</aside>
 
-In the case of a single [=source root=], the value of the `sourceRoot` key MAY be an [=ObjecttypeRef node=] directly, as a shorthand for the [=SourceRoot node=].
+### `ObjectTypeMappingSet`
+
+An <dfn>`ObjectTypeMappingSet` node</dfn> expresses an [=object type mapping set=].
+
+An [=ObjectTypeMappingSet node=] MUST have a `sourceRoot` key, which represents the [=source root=] and whose value MUST be an [=ObjecttypeRef node=] as a shorthand for the [=SourceRoot node=].
 
 An [=ObjectTypeMapping node=] MUST have zero or one `propertyMappings` key, whose value is a [mapping node](https://yaml.org/spec/1.2.2/#mapping) representing [=PropertyMapping nodes=].
 
-<aside class="example" title="object type mapping">
+<aside class="example" title="object type mapping with object type mapping sets">
 
-  ```yaml
-  objectTypeMappings:
+```yaml
+objectTypeMappings:
+
+  Address:
+    sourceRoot: bag:Nummeraanduiding
+    propertyMappings: ...
     
-    Address:
-      sourceRoot: bag:Nummeraanduiding
+  Gebouw:
+    - sourceRoot: bgt:Pand
       propertyMappings: ...
-      
-    Gebouw:
-      sourceRoot: 
-        - type: bgt:Pand
-        - type: bgt:OverigBouwwerk
+    - sourceRoot: bgt:OverigBouwwerk
       propertyMappings: ...
-  ```
+```
 </aside>
 
 ### `SourceRoot`
@@ -158,10 +164,10 @@ A [=PropertyMapping node=] MUST have zero or one `combine` key, whose value is a
 
 <aside class="example" title="property mapping">
 
-  ```yaml
-  objectTypeMappings:
-    Address:
-      sourceRoot: bag:Nummeraanduiding
+```yaml
+objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
       propertyMappings:
         addressID:
           pathMappings:
@@ -169,7 +175,7 @@ A [=PropertyMapping node=] MUST have zero or one `combine` key, whose value is a
         postCode:
           pathMapping:
             path: postcode
-  ```
+```
 </aside>
 
 ### `PathMapping`
@@ -192,10 +198,10 @@ When a [=PathMapping node=] is the value of an `andThen` key, the `ifMatch` [=ma
 
 <aside class="example" title="path mapping">
 
-  ```yaml
-  objectTypeMappings:
-    Address:
-      sourceRoot: bag:Nummeraanduiding
+```yaml
+objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
       propertyMappings:
         locatorDesignator:
           pathMappings:
@@ -219,7 +225,7 @@ When a [=PathMapping node=] is the value of an `andThen` key, the `ifMatch` [=ma
               ifMatch:
                 type: isNull
               path: ligtAan/ligtIn/naam
-  ```
+```
 </aside>
 
 ### `Path`
@@ -252,16 +258,16 @@ A <dfn>`ResultMapper` node</dfn> is a [=Component node=]. It represents a [=resu
 ggit
 <aside class="example" title="Result mapper">
 
-  ```yaml
-  objectTypeMappings:
-    Address:
-      sourceRoot: bag:Nummeraanduiding
+```yaml
+objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
       propertyMappings:
         isMainAddress:
           pathMapping:
             path: isHoofdadresVan/identificatie
             map: nonNull
-  ```
+```
 </aside>
 
 ### `Matcher`
