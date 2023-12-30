@@ -58,7 +58,7 @@ _Overview relations_
 | Name       | Multiplicity | Definition                                                                                           |
 |------------|--------------|------------------------------------------------------------------------------------------------------|
 | sourceType | 1..1         | A relation pointing to a [=object type ref=], indicating the source object type of the [=relation=]. |
-| property   | 0..*         | A relation pointing to a newly defined [=property=].                                                 |
+| property   | 1..1         | A relation pointing to a newly defined [=relation=].                                                 |
 
 ## Object type mapping (`ObjectTypeMapping`)
 
