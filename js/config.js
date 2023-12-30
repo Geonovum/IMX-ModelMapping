@@ -1,8 +1,9 @@
 let respecConfig = {
   useLogo: true,
   useLabel: true,
+  pluralize: true,
   // title is verplicht! Neem hier de titel van het document op ----------------------
-  title: "IMX-ModelMapping",
+  title: "IMX Model Mapping",
   //-- specStatus is verplicht! (activeer 1 van de volgende) --------------------------
   //specStatus: "wv",                   // Werkversie
   specStatus: "cv",               // Consultatieversie
