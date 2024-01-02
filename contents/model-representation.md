@@ -12,11 +12,11 @@ The mapping to the IMX internal logical data model is left as an implementation 
 
 A <dfn>model</dfn> is the representation of a logical data model which can be used in an [=IMX orchestration engine=].
 
-A logical data model is used to define [=data elements=] which which are used to describe [=objects=].
+A logical data model is used to define [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) which which are used to describe [=objects=].
 
-A <dfn>data element</dfn> consists of a subject, a property and a value, which together represent an elementary statement about an object.
+A [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) consists of a subject, a property and a value, which together represent an elementary statement about an object.
 
-An <dfn>object</dfn> is anything that is the subject of a [=data element=]. A contextually grouped set of [=data elements=] about the same object forms a <dfn>data object</dfn>.
+An <dfn>object</dfn> is anything that is the subject of a [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item). A contextually grouped set of [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) about the same object forms a <dfn>data object</dfn>.
 
 _Overview attributes_
 
@@ -72,7 +72,7 @@ _Overview attributes_
 
 ## Property (`Property`)
 
-A <dfn>property</dfn> is a predicate which is used to express a [=data element=] about an [=object=].
+A <dfn>property</dfn> is a predicate which is used to express a [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) about an [=object=].
 
 _Overview attributes_
 
@@ -84,7 +84,7 @@ _Overview attributes_
 
 ### Multiplicity (`Multiplicity`)
 
-A <dfn>multiplicity</dfn> is an enumeration item which is used to express how many times a [=data element=] with the same [=property=], and the same subject, can be expected to occur.
+A <dfn>multiplicity</dfn> is an enumeration item which is used to express how many times a [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) with the same [=property=], and the same subject, can be expected to occur.
 
 _Overview enumeration items_
 | Name     | Definition                |
@@ -120,11 +120,11 @@ _Overview relations_
 
 | Name              | Multiplicity | Definition                                                                                          |
 |-------------------|--------------|-----------------------------------------------------------------------------------------------------|
-| type              | 1..1          | The [=value type=] that is the type of the value of the [=data element=] expressing the attribute. |
+| type              | 1..1          | The [=value type=] that is the type of the value of the [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) expressing the attribute. |
 
 ## Value type (`ValueType`)
 
-A <dfn>value type</dfn> is a type of an [=attribute=]-expressing [=data element=].
+A <dfn>value type</dfn> is a type of an [=attribute=]-expressing [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item).
 
 _Overview attributes_
 

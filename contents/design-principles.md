@@ -10,11 +10,12 @@ The mapping should be declarative. By declarative we mean that the mapping is de
 
 **The mapping is expressed in terms of logical models**
 
-In order to be independent of technical data models and corresponding data formats, the mapping should be expressed at the logical level. A logical data model establishes the structure of data elements, and their relationships, yet is independent of their technical implementation. This contributes to the mappings implementation independence.
+In order to be independent of technical data models and corresponding data formats, the mapping should be expressed at the logical level. A logical data model establishes the structure of [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item), and their relationships, yet is independent of their technical implementation. This contributes to the mappings implementation independence.
 
 <aside class="note">
 Note that the logical model should be expressive enough to cover all its technical implementations. That is, it should be possible to translate expressions about data at the logical level, to the implementing technical level.
 </aside>
 
 **The mapping is independent of data modeling standards**
-Their exist a variety of different data modeling standards, all with their own intricacies in the way they define data elements. The mapping should be independent of these. This will allow for broad applicability of the mapping.
+
+Their exist a variety of different data modeling standards, all with their own intricacies in the way they define [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item). The mapping should be independent of these. This will allow for broad applicability of the mapping.

@@ -4,11 +4,11 @@
 
 ## Source model (`SourceModel`)
 
-A <dfn>source model</dfn> is a [=model=] which is used to define the structure of [=data elements=] in a [=source data source=] in an [=IMX orchestration process=].
+A <dfn>source model</dfn> is a [=model=] which is used to define the structure of [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) in a [=source data source=] in an [=IMX orchestration process=].
 
 ## Target model (`TargetModel`)
 
-A <dfn>target model</dfn> is a [=model=] which is used to define the structure of [=data elements=] in the [=target data source=] in an [=IMX orchestration process=].
+A <dfn>target model</dfn> is a [=model=] which is used to define the structure of [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) in the [=target data source=] in an [=IMX orchestration process=].
 
 ## Model mapping (`ModelMapping`)
 
@@ -58,17 +58,27 @@ _Overview relations_
 | Name       | Multiplicity | Definition                                                                                           |
 |------------|--------------|------------------------------------------------------------------------------------------------------|
 | sourceType | 1..1         | A relation pointing to a [=object type ref=], indicating the source object type of the [=relation=]. |
-| property   | 0..*         | A relation pointing to a newly defined [=property=].                                                 |
+| property   | 1..1         | A relation pointing to a newly defined [=relation=].                                                 |
 
 ## Object type mapping (`ObjectTypeMapping`)
 
-An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [=data elements=] to a target-model-object-type-based [=data object=].
+An <dfn>object type mapping</dfn> is a set of declarations which express the mapping of one or more [=source model=] based [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) using its [=object type mapping sets=].
 
 _Overview attributes_
 
 | Name              | Multiplicity | Definition                                                                                           |
 |-------------------|--------------|------------------------------------------------------------------------------------------------------|
 | objectTypeName    | 0..*         | The name of the [=object type=] in the target model which is the target of this object type mapping. |
+
+_Overview relations_
+
+| Name            | Multiplicity | Definition                                            |
+|-----------------|--------------|-------------------------------------------------------|
+| mappingSet      | 1..*         | A relation pointing to a [=object type mapping set=]. |
+
+## Object type mapping set (`ObjectTypeMappingSet`)
+
+An <dfn>object type mapping set</dfn> is a set of declarations which express the mapping of one or more [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) using a specicic [=source root=] to a target-model-object-type-based [=data object=].
 
 _Overview relations_
 
@@ -102,7 +112,7 @@ _Overview relations_
 
 ## Path mapping (`PathMapping`)
 
-A <dfn>path mapping</dfn> is a set of declarations which express references to [=data elements=] of [=data objects=] of [=source data sources=] and actions on those.
+A <dfn>path mapping</dfn> is a set of declarations which express references to [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) of [=data objects=] of [=source data sources=] and actions on those.
 
 A <dfn>path mapping evaluation</dfn> is the evaluation of a [=path mapping=] yielding a <dfn>path mapping result</dfn>, which serves as input for the [=property mapping=].
 
@@ -125,11 +135,11 @@ _Overview relations_
 
 ## Path (`Path`)
 
-A <dfn data-lt="path expression">path</dfn>, or path expression, is a set of declarations which, conceptually, represent a possible route through a graph of data elements. A [=path=] is comprised of an ordered, non-unique sequence of [=segments=]. Each segment represents a step in that route.
+A <dfn data-lt="path expression">path</dfn>, or path expression, is a set of declarations which, conceptually, represent a possible route through a graph of [data items](https://geonovum.github.io/IMX-Metadata/#dfn-data-item). A [=path=] is comprised of an ordered, non-unique sequence of [=segments=]. Each segment represents a step in that route.
 
 A <dfn>segment</dfn> is a string that represents a [=property reference=].
 
-A <dfn>property reference</dfn> is a string that matches the name of a [=property=] in a [=data element=] in a [=source data source=].
+A <dfn>property reference</dfn> is a string that matches the name of a [=property=] in a [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) in a [=source data source=].
 
 _Overview attributes_
 
