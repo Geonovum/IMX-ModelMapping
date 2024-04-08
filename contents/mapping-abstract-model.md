@@ -1,5 +1,7 @@
 # Mapping abstract model
 
+The following model implements the model defined in chapter 4 into a model containing all the necessary mapping rules. Objecttype mappping, path mapping (navigating through a source model) and property mapping are the basic concepts. Operators as result combiner, result mapper and matcher allow for defining complex combinations of chained results.
+
 ![IMX Model Mapping](media/imx-mapping-model.drawio.png "IMX Model Mapping")
 
 ## Source model (`SourceModel`)
