@@ -87,11 +87,12 @@ _Overview attributes_
 A <dfn>multiplicity</dfn> is an enumeration item which is used to express how many times a [data item](https://geonovum.github.io/IMX-Metadata/#dfn-data-item) with the same [=property=], and the same subject, can be expected to occur.
 
 _Overview enumeration items_
-| Name     | Definition                |
-|----------|---------------------------|
-| required | Occurs exactly once.      |
-| optional | Can occur at most once.   |
-| multi    | Can occur multiple times. |
+| Name          | Definition                  |
+|---------------|-----------------------------|
+| requiredOnce  | Occurs exactly once.        |
+| requiredMulti | Occurs multiple times.      |
+| optionalOnce  | Can occur at most once.     |
+| optionalMulti | Can occur multiple times.   |
 
 ### Relation (`Relation`)
 
