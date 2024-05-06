@@ -1,0 +1,2694 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta name="generator" content="ReSpec 34.1.4">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+:is(aside,div).example{border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+.example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+
+
+
+
+
+
+
+<script>document.title = respecConfig.title</script>
+<title>IMX Model Mapping</title>
+
+<title>Default</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico">
+
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+<style id="respec-nlgov">
+img.license{float:left;padding-right:5px}
+</style>
+<style>
+ul.index{columns:30ch;column-gap:1.5em}
+ul.index li{list-style:inherit}
+ul.index li span{color:inherit;cursor:pointer;white-space:normal}
+#index-defined-here ul.index li{font-size:.9rem}
+ul.index code{color:inherit}
+#index-defined-here .print-only{display:none}
+@media print{
+#index-defined-here .print-only{display:initial}
+}
+</style>
+<meta name="description" content="This document specifies the IMX model mapping. The IMX model mapping expresses a mapping between one or more source data models, to a target data model, and is designed to be used as configuration for an IMX orchestration process.">
+<style>
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+.hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+.hljs-literal{color:#0b76c5}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+
+  .sidelabel {
+    position: fixed;
+    -webkit-transform-origin: top right;
+    right: 100%;
+    top: 0;
+    -webkit-transform: rotate(-90deg);
+    padding: 4px 50px 4px 10px;
+    color: white;
+    white-space: nowrap;
+    z-index: 1;
+    background-color: #045D9F;
+  }
+</style>
+<script type="text/javascript">
+   /* Any custom mermaid.js scripts will go here. */
+  </script>
+<style>
+
+  /* Any custom mermaid.js scripts will go here. */
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "nl_organisationName": "Geonovum",
+  "nl_organisationPublishURL": "https://docs.geostandaarden.nl/",
+  "logos": [
+    {
+      "src": "https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg",
+      "alt": "Geonovum",
+      "id": "Geonovum",
+      "height": 67,
+      "width": 132,
+      "url": "https://www.geonovum.nl/geo-standaarden"
+    }
+  ],
+  "postProcess": [
+    null
+  ],
+  "latestVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "shortName",
+    "/"
+  ],
+  "thisVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "specStatus",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "publishDate"
+  ],
+  "prevVersion": [
+    "nl_organisationPublishURL",
+    "pubDomain",
+    "/",
+    "previousMaturity",
+    "-",
+    "specType",
+    "-",
+    "shortName",
+    "-",
+    "previousPublishDate"
+  ],
+  "useLogo": true,
+  "useLabel": true,
+  "license": "cc-by",
+  "addSectionLinks": true,
+  "localizationStrings": {
+    "en": {
+      "wv": "Editor's draft",
+      "cv": "Candidate recommendation",
+      "vv": "Proposed recommendation",
+      "def": "Recommendation",
+      "ld": "Living document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standard",
+      "im": "Information model",
+      "pr": "Practical guideline",
+      "hr": "Guide",
+      "wa": "Work process agreement",
+      "al": "General",
+      "bd": "Governance documentation",
+      "bp": "Best practice"
+    },
+    "nl": {
+      "wv": "Werkversie",
+      "cv": "Consultatieversie",
+      "vv": "Versie ter vaststelling",
+      "def": "Vastgestelde versie",
+      "ld": "Levend document",
+      "basis": "Document",
+      "no": "Norm",
+      "st": "Standaard",
+      "im": "Informatiemodel",
+      "pr": "Praktijkrichtlijn",
+      "hr": "Handreiking",
+      "wa": "Werkafspraak",
+      "al": "Algemeen",
+      "bd": "Beheerdocumentatie",
+      "bp": "Best practice"
+    }
+  },
+  "sotdText": {
+    "nl": {
+      "sotd": "Status van dit document",
+      "def": "Dit is de definitieve versie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "wv": "Dit is een werkversie die op elk moment kan worden gewijzigd, verwijderd of vervangen door andere documenten. Het is geen stabiel document.",
+      "cv": "Dit is een consultatieversie. Commentaar over dit document kan gestuurd worden naar ",
+      "vv": "Dit is de definitieve conceptversie van dit document. Wijzigingen naar aanleiding van consultaties zijn doorgevoerd.",
+      "basis": "Dit is een document zonder officiële status.",
+      "ld": "Dit is een levend document dat regelmatig gewijzigd wordt."
+    },
+    "en": {
+      "sotd": "Status of this document",
+      "def": "This is the definitive version of this document. Edits resulting from consultations have been applied.",
+      "wv": "This is a working draft that can be changed, removed or replaced by other documents at any time. It is not a stable document.",
+      "cv": "This is a stable draft, published for public comment. Comments regarding this document may be sent to ",
+      "vv": "This is the final draft of this document. Edits resulting from consultations have been applied.",
+      "basis": "This document has no official standing.",
+      "ld": "This is a living document, which is updated regularly."
+    }
+  },
+  "labelColor": {
+    "def": "#045D9F",
+    "wv": "#FF0000",
+    "cv": "#045D9F",
+    "vv": "#045D9F",
+    "basis": "#80CC28",
+    "ld": "#80CC28"
+  },
+  "licenses": {
+    "cc0": {
+      "name": "Creative Commons 0 Public Domain Dedication",
+      "short": "CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/CC-Licentie.svg"
+    },
+    "cc-by": {
+      "name": "Creative Commons Attribution 4.0 International Public License",
+      "short": "CC-BY",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg"
+    },
+    "cc-by-nd": {
+      "name": "Creative Commons Naamsvermelding-GeenAfgeleideWerken 4.0 Internationaal",
+      "short": "CC-BY-ND",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/legalcode.nl",
+      "image": "https://tools.geostandaarden.nl/respec/style/logos/cc-by-nd.svg"
+    }
+  },
+  "localBiblio": {
+    "SemVer": {
+      "href": "https://semver.org",
+      "title": "Semantic Versioning 2.0.0",
+      "authors": [
+        "T. Preston-Werner"
+      ],
+      "date": "June 2013"
+    }
+  },
+  "pluralize": true,
+  "title": "IMX Model Mapping",
+  "specStatus": "vv",
+  "specType": "ST",
+  "pubDomain": "IMX",
+  "licence": "cc-by",
+  "shortName": "ModelMapping",
+  "publishDate": "2024-05-01",
+  "previousPublishDate": "2024-01-08",
+  "previousMaturity": "CV",
+  "editors": [
+    {
+      "name": "Paul Janssen",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Pano Maria",
+      "company": "Geonovum",
+      "companyURL": "https://www.geonovum.nl"
+    }
+  ],
+  "github": "https://github.com/Geonovum/IMX-ModelMapping",
+  "alternateFormats": [
+    {
+      "label": "pdf",
+      "uri": "template.pdf"
+    }
+  ]
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/base.css"></head>
+
+<body class="h-entry"><div class="head">
+    <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.svg" width="132">
+  </a> <h1 id="title" class="title">IMX Model Mapping</h1>
+    
+    <h2>
+      Geonovum Standard<br>
+      Proposed recommendation
+      <time class="dt-published" datetime="2024-05-01">May 01, 2024</time>
+    </h2>
+    <dl>
+      <dt>This version:</dt><dd class="status">
+              <a class="u-url status" href="https://docs.geostandaarden.nl/imx/vv-st-modelmapping-20240501">https://docs.geostandaarden.nl/imx/vv-st-modelmapping-20240501</a>
+            </dd>
+      <dt>Latest published version:</dt><dd>
+              <a href="https://docs.geostandaarden.nl/imx/modelmapping/">https://docs.geostandaarden.nl/imx/modelmapping/</a>
+            </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://geonovum.github.io/IMX-ModelMapping/">https://geonovum.github.io/IMX-ModelMapping/</a></dd>
+      
+      
+      
+      <dt>Previous version:</dt><dd><a href="https://docs.geostandaarden.nl/imx/cv-st-modelmapping-20240108">https://docs.geostandaarden.nl/imx/cv-st-modelmapping-20240108</a></dd>
+      
+      <dt>Editor:</dt>
+      <dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Paul Janssen</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd>
+      
+      <dt>Author:</dt><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Pano Maria</span> (<a class="p-org org h-org" href="https://www.geonovum.nl">Geonovum</a>)
+  </dd>
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/Geonovum/IMX-ModelMapping/">GitHub Geonovum/IMX-ModelMapping</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMX-ModelMapping/issues/">File an issue</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMX-ModelMapping/commits/">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/IMX-ModelMapping/pulls/">Pull requests</a>
+  </dd>
+    </dl>
+    
+    
+    <p>
+          This document is also available in these non-normative format:
+          <a rel="alternate" href="template.pdf">pdf</a>
+        </p>
+    <p class="copyright">
+          This document is licensed under 
+          <a rel="license" href="https://creativecommons.org/licenses/by/4.0/legalcode" class="subfoot"><img class="license" src="https://tools.geostandaarden.nl/respec/style/logos/cc-by.svg" alt="Logo Creative Commons Attribution 4.0 International Public License"><br> Creative Commons Attribution 4.0 International Public License</a>
+        </p>
+    <hr title="Separator for header">
+  </div>
+<section id="abstract" class="introductory"><h2>Abstract</h2><p>This document specifies the IMX model mapping. The IMX model mapping expresses a mapping between one or more source data models, to a target data model, and is designed to be used as configuration for an IMX orchestration process.</p>
+</section>
+<section id="sotd" class="introductory"><h2>Status of this document</h2><p>This is the final draft of this document. Edits resulting from consultations have been applied.</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of this document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#design-principles"><bdi class="secno">2. </bdi>Design Principles</a></li><li class="tocline"><a class="tocxref" href="#basic-concepts"><bdi class="secno">3. </bdi>Basic concepts</a></li><li class="tocline"><a class="tocxref" href="#representing-models-for-orchestration"><bdi class="secno">4. </bdi>Representing models for orchestration</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#model-model"><bdi class="secno">4.1 </bdi>Model (<code>Model</code>)</a></li><li class="tocline"><a class="tocxref" href="#object-type-objecttype"><bdi class="secno">4.2 </bdi>Object type (<code>ObjectType</code>)</a></li><li class="tocline"><a class="tocxref" href="#filter-mapping-filtermapping"><bdi class="secno">4.3 </bdi>Filter mapping (<code>FilterMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#filter-operator-filter-operator"><bdi class="secno">4.4 </bdi>Filter Operator (<code>Filter Operator</code>)</a></li><li class="tocline"><a class="tocxref" href="#property-property"><bdi class="secno">4.5 </bdi>Property (<code>Property</code>)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multiplicity-multiplicity"><bdi class="secno">4.5.1 </bdi>Multiplicity (<code>Multiplicity</code>)</a></li><li class="tocline"><a class="tocxref" href="#relation-relation"><bdi class="secno">4.5.2 </bdi>Relation (<code>Relation</code>)</a></li><li class="tocline"><a class="tocxref" href="#attribute-attribute"><bdi class="secno">4.5.3 </bdi>Attribute (<code>Attribute</code>)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#value-type-valuetype"><bdi class="secno">4.6 </bdi>Value type (<code>ValueType</code>)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#scalar-type-scalartype"><bdi class="secno">4.6.1 </bdi>Scalar type (<code>ScalarType</code>)</a></li><li class="tocline"><a class="tocxref" href="#geometry-type-geometrytype"><bdi class="secno">4.6.2 </bdi>Geometry type (<code>GeometryType</code>)</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#mapping-abstract-model"><bdi class="secno">5. </bdi>Mapping abstract model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#source-model-sourcemodel"><bdi class="secno">5.1 </bdi>Source model (<code>SourceModel</code>)</a></li><li class="tocline"><a class="tocxref" href="#target-model-targetmodel"><bdi class="secno">5.2 </bdi>Target model (<code>TargetModel</code>)</a></li><li class="tocline"><a class="tocxref" href="#model-mapping-modelmapping"><bdi class="secno">5.3 </bdi>Model mapping (<code>ModelMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#object-type-ref-objecttyperef"><bdi class="secno">5.4 </bdi>Object type ref (<code>ObjectTypeRef</code>)</a></li><li class="tocline"><a class="tocxref" href="#source-root-sourceroot"><bdi class="secno">5.5 </bdi>Source root (<code>SourceRoot</code>)</a></li><li class="tocline"><a class="tocxref" href="#source-relation-mapping-sourcerelationmapping"><bdi class="secno">5.6 </bdi>Source relation mapping (<code>SourceRelationMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#object-type-mapping-objecttypemapping"><bdi class="secno">5.7 </bdi>Object type mapping (<code>ObjectTypeMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#object-type-mapping-set-objecttypemappingset"><bdi class="secno">5.8 </bdi>Object type mapping set (<code>ObjectTypeMappingSet</code>)</a></li><li class="tocline"><a class="tocxref" href="#property-mapping-propertymapping"><bdi class="secno">5.9 </bdi>Property mapping (<code>PropertyMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#path-mapping-pathmapping"><bdi class="secno">5.10 </bdi>Path mapping (<code>PathMapping</code>)</a></li><li class="tocline"><a class="tocxref" href="#path-path"><bdi class="secno">5.11 </bdi>Path (<code>Path</code>)</a></li><li class="tocline"><a class="tocxref" href="#path-repeat-pathrepeat"><bdi class="secno">5.12 </bdi>Path repeat (<code>PathRepeat</code>)</a></li><li class="tocline"><a class="tocxref" href="#component-component"><bdi class="secno">5.13 </bdi>Component (<code>Component</code>)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#result-combiner-resultcombiner"><bdi class="secno">5.13.1 </bdi>Result combiner (<code>ResultCombiner</code>)</a></li><li class="tocline"><a class="tocxref" href="#result-mapper-resultmapper"><bdi class="secno">5.13.2 </bdi>Result mapper (<code>ResultMapper</code>)</a></li><li class="tocline"><a class="tocxref" href="#matcher-resultmatcher"><bdi class="secno">5.13.3 </bdi>Matcher (<code>ResultMatcher</code>)</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#yaml-imx-model-mapping-specification"><bdi class="secno">6. </bdi>YAML IMX Model Mapping specification</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#encoding"><bdi class="secno">6.1 </bdi>Encoding</a></li><li class="tocline"><a class="tocxref" href="#mapping-definitions"><bdi class="secno">6.2 </bdi>Mapping definitions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#modelmapping"><bdi class="secno">6.2.1 </bdi><code>ModelMapping</code></a></li><li class="tocline"><a class="tocxref" href="#sourcemodel"><bdi class="secno">6.2.2 </bdi><code>SourceModel</code></a></li><li class="tocline"><a class="tocxref" href="#targetmodel"><bdi class="secno">6.2.3 </bdi><code>TargetModel</code></a></li><li class="tocline"><a class="tocxref" href="#modelreference"><bdi class="secno">6.2.4 </bdi><code>ModelReference</code></a></li><li class="tocline"><a class="tocxref" href="#sourcerelation"><bdi class="secno">6.2.5 </bdi><code>SourceRelation</code></a></li><li class="tocline"><a class="tocxref" href="#property"><bdi class="secno">6.2.6 </bdi><code>Property</code></a></li><li class="tocline"><a class="tocxref" href="#keymapping"><bdi class="secno">6.2.7 </bdi><code>KeyMapping</code></a></li><li class="tocline"><a class="tocxref" href="#filtermapping"><bdi class="secno">6.2.8 </bdi><code>FilterMapping</code></a></li><li class="tocline"><a class="tocxref" href="#filteroperator"><bdi class="secno">6.2.9 </bdi><code>FilterOperator</code></a></li><li class="tocline"><a class="tocxref" href="#objecttypemapping"><bdi class="secno">6.2.10 </bdi><code>ObjectTypeMapping</code></a></li><li class="tocline"><a class="tocxref" href="#objecttypemappingset"><bdi class="secno">6.2.11 </bdi><code>ObjectTypeMappingSet</code></a></li><li class="tocline"><a class="tocxref" href="#sourceroot"><bdi class="secno">6.2.12 </bdi><code>SourceRoot</code></a></li><li class="tocline"><a class="tocxref" href="#objecttyperef"><bdi class="secno">6.2.13 </bdi><code>ObjectTypeRef</code></a></li><li class="tocline"><a class="tocxref" href="#propertymapping"><bdi class="secno">6.2.14 </bdi><code>PropertyMapping</code></a></li><li class="tocline"><a class="tocxref" href="#pathmapping"><bdi class="secno">6.2.15 </bdi><code>PathMapping</code></a></li><li class="tocline"><a class="tocxref" href="#path"><bdi class="secno">6.2.16 </bdi><code>Path</code></a></li><li class="tocline"><a class="tocxref" href="#component"><bdi class="secno">6.2.17 </bdi><code>Component</code></a></li><li class="tocline"><a class="tocxref" href="#resultcombiner"><bdi class="secno">6.2.18 </bdi><code>ResultCombiner</code></a></li><li class="tocline"><a class="tocxref" href="#resultmapper"><bdi class="secno">6.2.19 </bdi><code>ResultMapper</code></a></li><li class="tocline"><a class="tocxref" href="#matcher"><bdi class="secno">6.2.20 </bdi><code>Matcher</code></a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#annex-1-mapping-specifications-in-excel"><bdi class="secno">7. </bdi>Annex-1 Mapping specifications in excel</a></li><li class="tocline"><a class="tocxref" href="#annex-2-mapping-specifications-in-yaml"><bdi class="secno">8. </bdi>Annex-2 Mapping specifications in YAML</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">9. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#tof"><bdi class="secno">10. </bdi>List of Figures</a></li><li class="tocline"><a class="tocxref" href="#index"><bdi class="secno">A. </bdi>Index</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#index-defined-here"><bdi class="secno">A.1 </bdi>Terms defined by this specification</a></li><li class="tocline"><a class="tocxref" href="#index-defined-elsewhere"><bdi class="secno">A.2 </bdi>Terms defined by reference</a></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">B.1 </bdi>Normative references</a></li></ol></li></ol></nav>
+
+
+<section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+<p>This document describes a proposed standard for mapping logical source data models to a logical target data model, in the context of IMX.</p>
+<p>The IMX model mapping standard plays an important role in the reference architecture of the IMX orchestration process. The mapping serves as a formal translation syntax from one or more source models based API data sources towards one a target model based API data source. This mapping is at the basis of the actual IMX orchestration process.</p>
+<p><a href="#representing-models-for-orchestration">Chapter 4: Model representation</a> specifies the model to which a source model must be mapped to be able to be put into the IMX orchestration engine. Basically a model consists of objecttypes and properties. Filter mapping specify how source object are selected to match target objects according to defined filter operations/queries.</p>
+<p><a href="#mapping-abstract-model">Chapter 5: Mapping abstract model</a> implements the model defined in chapter 4 into a model for mapping between a source - and a target model containing all the necessary mapping rules. Objecttype mappping, path mapping (navigating through a source model) and property mapping are the basic concepts. Operators as result combiner, result mapper and matcher allow for defining complex combinations of chained results.</p>
+<p><a href="#yaml-imx-model-mapping-specification">Chapter 6: YAML specification</a> presents the YAML encoding of the abstract mapping model. This YAML IMX Mapping specification serves as a specification for YAML instance documents into the IMX Orchestration engine for actual operating on a set of source and target API's.</p>
+<p>In <a href="#annex-1-mapping-specifications-in-excel">annex 1</a> the mapping specifications of the IMX-Geo model are presented. These are presented in an excel spreadsheet and serve as input for the machine readable YAML formalisation presented in this document.</p>
+</section>
+<section class="informative" id="design-principles"><div class="header-wrapper"><h2 id="x2-design-principles"><bdi class="secno">2. </bdi>Design Principles</h2><a class="self-link" href="#design-principles" aria-label="Permalink for Section 2."></a></div><p><em>This section is non-normative.</em></p>
+<p><strong>The mapping is implementation independent</strong></p>
+<p>An important design principle is that the mapping should be independent of technical implementations, data format, or data modeling standards. This allows for broad use of the mapping across disparate data sources and environments.</p>
+<p><strong>The mapping is declarative</strong></p>
+<p>The mapping should be declarative. By declarative we mean that the mapping is described in a high level abstract language, describing the intent of the mapping, without explicit procedural logic. This affords various different usage scenario's, like employing different procedural strategies during the execution of the mapping, while keeping the mapping simple to express.</p>
+<p><strong>The mapping is expressed in terms of logical models</strong></p>
+<p>In order to be independent of technical data models and corresponding data formats, the mapping should be expressed at the logical level. A logical data model establishes the structure of <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a>, and their relationships, yet is independent of their technical implementation. This contributes to the mappings implementation independence.</p>
+<div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><aside class="">
+Note that the logical model should be expressive enough to cover all its technical implementations. That is, it should be possible to translate expressions about data at the logical level, to the implementing technical level.
+</aside></div>
+
+<p><strong>The mapping is independent of data modeling standards</strong></p>
+<p>Their exist a variety of different data modeling standards, all with their own intricacies in the way they define <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a>. The mapping should be independent of these. This will allow for broad applicability of the mapping.</p>
+</section>
+<section class="informative" id="basic-concepts"><div class="header-wrapper"><h2 id="x3-basic-concepts"><bdi class="secno">3. </bdi>Basic concepts</h2><a class="self-link" href="#basic-concepts" aria-label="Permalink for Section 3."></a></div><p><em>This section is non-normative.</em></p>
+<p>The IMX model mapping plays an important role in the reference architecture of the <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-1">IMX orchestration process</a>. The mapping serves as a translation from one or more source model based API data sources towards a target model based API data source.</p>
+<p>The IMX model mapping is the core of what drives the <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-2">orchestration process</a> that will handle requests to the target API.</p>
+<p>The <dfn data-lt="orchestration process|IMX orchestration process" id="dfn-orchestration-process" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">IMX orchestration process</dfn> is an activity which can answer requests on a <a data-link-type="dfn|abstract-op" href="#dfn-target-data-source" class="internalDFN" id="ref-for-dfn-target-data-source-1">target data source</a>, generated in accordance with a <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-1">target model</a>, by orchestrating requests on the underlying <a data-link-type="dfn|abstract-op" href="#dfn-source-data-source" class="internalDFN" id="ref-for-dfn-source-data-source-1">source data sources</a>, which correspond with <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-1">source models</a>, driven by a <a data-link-type="dfn|abstract-op" href="#dfn-imx-model-mapping" class="internalDFN" id="ref-for-dfn-imx-model-mapping-1">IMX model mapping</a>, combining the results.</p>
+<p>The <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-3">orchestration process</a> is carried out by an <a data-link-type="dfn|abstract-op" href="#dfn-imx-orchestration-engine" class="internalDFN" id="ref-for-dfn-imx-orchestration-engine-1">IMX orchestration engine</a>. An <dfn id="dfn-imx-orchestration-engine" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">IMX orchestration engine</dfn> is a software component which takes an <a data-link-type="dfn|abstract-op" href="#dfn-imx-model-mapping" class="internalDFN" id="ref-for-dfn-imx-model-mapping-2">IMX model mapping</a>, one or more <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-2">source models</a> and <a data-link-type="dfn|abstract-op" href="#dfn-source-data-source" class="internalDFN" id="ref-for-dfn-source-data-source-2">source data sources</a>, and a <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-2">target model</a>, and generates a <a data-link-type="dfn|abstract-op" href="#dfn-target-data-source" class="internalDFN" id="ref-for-dfn-target-data-source-2">target data source</a> in accordance with the <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-3">target model</a> which carries out he <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-4">orchestration process</a>.</p>
+<p>A <dfn id="dfn-data-source" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">data source</dfn> is an entity which provides access to a dataset.</p>
+<p>A <dfn data-plurals="source data sources" id="dfn-source-data-source" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">source data source</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-data-source" class="internalDFN" id="ref-for-dfn-data-source-1">data source</a> which acts as a source in an <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-5">orchestration process</a>.</p>
+<p>A <dfn id="dfn-target-data-source" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">target data source</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-data-source" class="internalDFN" id="ref-for-dfn-data-source-2">data source</a> which acts as the target in an <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-6">orchestration process</a>.</p>
+<p>
+      </p><figure id="fig-imx-orchestration">
+        <img src="media/orchestration.drawio.png" alt="IMX Orchestration">
+        <figcaption><a class="self-link" href="#fig-imx-orchestration">Figure <bdi class="figno">1</bdi></a> <span class="fig-title">IMX Orchestration</span></figcaption>
+      </figure>
+    <p></p>
+<p>The default way of expressing a model mapping is in [<cite><a class="bibref" data-link-type="biblio" href="#bib-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">YAML</a></cite>] format. In recent years, [<cite><a class="bibref" data-link-type="biblio" href="#bib-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">YAML</a></cite>] has emerged as a concise, readable format to represent information, which is widely applied as a configuration file format.</p>
+<aside class="example" id="example-imx-model-mapping-in-yaml"><div class="marker">
+    <a class="self-link" href="#example-imx-model-mapping-in-yaml">Example<bdi> 1</bdi></a><span class="example-title">: IMX Model Mapping in YAML</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        addressID:
+          pathMappings:
+            path: identificatie
+        locatorDesignator:
+          pathMappings:
+            - path: huisnummer
+            - path: huisnummertoevoeging
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
+            - path: huisletter
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
+          combine:
+            type: join
+        postCode:
+          pathMappings:
+            path: postcode
+        postName:
+          pathMappings:
+            path: ligtIn/naam
+            andThen:
+              ifMatch:
+                type: isNull
+              path: ligtAan/ligtIn/naam
+        thoroughfare:
+          pathMappings:
+            path: ligtAan/naam
+</code></pre>
+</aside></section>
+<section id="representing-models-for-orchestration"><div class="header-wrapper"><h2 id="x4-representing-models-for-orchestration"><bdi class="secno">4. </bdi>Representing models for orchestration</h2><a class="self-link" href="#representing-models-for-orchestration" aria-label="Permalink for Section 4."></a></div>
+<p>To make the <a data-link-type="dfn|abstract-op" href="#dfn-imx-model-mapping" class="internalDFN" id="ref-for-dfn-imx-model-mapping-3">IMX mapping</a> and orchestration independent of underlying modeling standards and implementations, a simple internal logical data model representation is used, to which a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-3">source model</a> must be mapped.</p>
+<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><aside class="">
+The mapping to the IMX internal logical data model is left as an implementation detail.
+</aside></div>
+
+<p>
+      </p><figure id="fig-model-representation-for-orchestration">
+        <img src="media/model.drawio.png" alt="Model representation for orchestration">
+        <figcaption><a class="self-link" href="#fig-model-representation-for-orchestration">Figure <bdi class="figno">2</bdi></a> <span class="fig-title">Model representation for orchestration</span></figcaption>
+      </figure>
+    <p></p>
+<section id="model-model"><div class="header-wrapper"><h3 id="x4-1-model-model"><bdi class="secno">4.1 </bdi>Model (<code>Model</code>)</h3><a class="self-link" href="#model-model" aria-label="Permalink for Section 4.1"></a></div>
+<p>A <dfn id="dfn-model" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">model</dfn> is the representation of a logical data model which can be used in an <a data-link-type="dfn|abstract-op" href="#dfn-imx-orchestration-engine" class="internalDFN" id="ref-for-dfn-imx-orchestration-engine-2">IMX orchestration engine</a>.</p>
+<p>A logical data model is used to define <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> which which are used to describe <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-1">objects</a>.</p>
+<p>A <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a> consists of a subject, a property and a value, which together represent an elementary statement about an object.</p>
+<p>An <dfn data-plurals="objects" id="dfn-object" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">object</dfn> is anything that is the subject of a <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a>. A contextually grouped set of <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> about the same object forms a <dfn data-plurals="data objects" id="dfn-data-object" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">data object</dfn>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>1..1</td>
+<td>The name of the model.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>objectType</td>
+<td>0..*</td>
+<td>A relation pointing to an <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-1">object type</a> that is part of the model.</td>
+</tr>
+</tbody></table>
+</section><section id="object-type-objecttype"><div class="header-wrapper"><h3 id="x4-2-object-type-objecttype"><bdi class="secno">4.2 </bdi>Object type (<code>ObjectType</code>)</h3><a class="self-link" href="#object-type-objecttype" aria-label="Permalink for Section 4.2"></a></div>
+<p>An <dfn id="dfn-object-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">object type</dfn> represents the set of a type of <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-2">object</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>1..1</td>
+<td>The name of the object type.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>property</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-1">property</a>.</td>
+</tr>
+<tr>
+<td>identityProperty</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-2">property</a> which is identifying for the property-bearing object type.</td>
+</tr>
+</tbody></table>
+</section><section id="filter-mapping-filtermapping"><div class="header-wrapper"><h3 id="x4-3-filter-mapping-filtermapping"><bdi class="secno">4.3 </bdi>Filter mapping (<code>FilterMapping</code>)</h3><a class="self-link" href="#filter-mapping-filtermapping" aria-label="Permalink for Section 4.3"></a></div>
+<p>A <dfn id="dfn-filter-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">filter mapping</dfn> speficies how to filter source objects matching the target object. </p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>property</td>
+<td>0..*</td>
+<td>A relation pointing to a target object's <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-3">property</a>.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td>0..*</td>
+<td>A relation pointing to an <a data-link-type="dfn|abstract-op" href="#dfn-operator" class="internalDFN" id="ref-for-dfn-operator-1">operator</a> which expresses a filter operation on the target object's <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-4">property</a> .</td>
+</tr>
+<tr>
+<td>sourcePath</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-1">path</a> on the objects of the source <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-2">object type</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="filter-operator-filter-operator"><div class="header-wrapper"><h3 id="x4-4-filter-operator-filter-operator"><bdi class="secno">4.4 </bdi>Filter Operator (<code>Filter Operator</code>)</h3><a class="self-link" href="#filter-operator-filter-operator" aria-label="Permalink for Section 4.4"></a></div>
+<p>A <dfn data-lt="operator|filter operator" id="dfn-operator" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">filter operator</dfn> specifies which operation is to be used to filter the matching source objects.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>0..*</td>
+<td>The operator type .</td>
+</tr>
+</tbody></table>
+</section><section id="property-property"><div class="header-wrapper"><h3 id="x4-5-property-property"><bdi class="secno">4.5 </bdi>Property (<code>Property</code>)</h3><a class="self-link" href="#property-property" aria-label="Permalink for Section 4.5"></a></div>
+<p>A <dfn data-plurals="properties" id="dfn-property" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">property</dfn> is a predicate which is used to express a <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a> about an <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-3">object</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>1..1</td>
+<td>The name of the property.</td>
+</tr>
+<tr>
+<td>isIdentifier</td>
+<td>1..1</td>
+<td>Indication whether the property is identifying.</td>
+</tr>
+<tr>
+<td>multiplicity</td>
+<td>1..1</td>
+<td>The <a data-link-type="dfn|abstract-op" href="#dfn-multiplicity" class="internalDFN" id="ref-for-dfn-multiplicity-1">multiplicity</a> of the property.</td>
+</tr>
+</tbody></table>
+<section id="multiplicity-multiplicity"><div class="header-wrapper"><h4 id="x4-5-1-multiplicity-multiplicity"><bdi class="secno">4.5.1 </bdi>Multiplicity (<code>Multiplicity</code>)</h4><a class="self-link" href="#multiplicity-multiplicity" aria-label="Permalink for Section 4.5.1"></a></div>
+<p>A <dfn id="dfn-multiplicity" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">multiplicity</dfn> is an enumeration item which is used to express how many times a <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a> with the same <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-5">property</a>, and the same subject, can be expected to occur.</p>
+<p><em>Overview enumeration items</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>requiredOnce</td>
+<td>Occurs exactly once.</td>
+</tr>
+<tr>
+<td>requiredMulti</td>
+<td>Occurs multiple times.</td>
+</tr>
+<tr>
+<td>optionalOnce</td>
+<td>Can occur at most once.</td>
+</tr>
+<tr>
+<td>optionalMulti</td>
+<td>Can occur multiple times.</td>
+</tr>
+</tbody></table>
+</section><section id="relation-relation"><div class="header-wrapper"><h4 id="x4-5-2-relation-relation"><bdi class="secno">4.5.2 </bdi>Relation (<code>Relation</code>)</h4><a class="self-link" href="#relation-relation" aria-label="Permalink for Section 4.5.2"></a></div>
+<p>A <dfn id="dfn-relation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">relation</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-6">property</a> which expresses a relationship between the relation-bearing <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-4">object</a> and a target <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-5">object</a>. It is a sub-type of <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-7">Property</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inverseName</td>
+<td>1..1</td>
+<td>The inverse name of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-1">relation</a>, to be used to traverse the relation in the inverse direction.</td>
+</tr>
+<tr>
+<td>inverseCardinality</td>
+<td>1..1</td>
+<td>The inverse cardinality of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-2">relation</a>.</td>
+</tr>
+<tr>
+<td>keyMapping</td>
+<td>0..1</td>
+<td>A map (String -&gt; Object) defining the mapping the source <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-3">object type</a> key <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-8">properties</a> to the target key <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-9">properties</a>.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>target</td>
+<td>0..*</td>
+<td>The <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-4">object type</a> that is the target of the relation.</td>
+</tr>
+<tr>
+<td>filterMapping</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-filter-mapping" class="internalDFN" id="ref-for-dfn-filter-mapping-1">filter mapping</a> to filter the matching source objects.</td>
+</tr>
+</tbody></table>
+</section><section id="attribute-attribute"><div class="header-wrapper"><h4 id="x4-5-3-attribute-attribute"><bdi class="secno">4.5.3 </bdi>Attribute (<code>Attribute</code>)</h4><a class="self-link" href="#attribute-attribute" aria-label="Permalink for Section 4.5.3"></a></div>
+<p>An <dfn id="dfn-attribute" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">attribute</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-10">property</a> which expresses a characteristic about an <a data-link-type="dfn|abstract-op" href="#dfn-object" class="internalDFN" id="ref-for-dfn-object-6">object</a>.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>1..1</td>
+<td>The <a data-link-type="dfn|abstract-op" href="#dfn-value-type" class="internalDFN" id="ref-for-dfn-value-type-1">value type</a> that is the type of the value of the <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a> expressing the attribute.</td>
+</tr>
+</tbody></table>
+</section></section><section id="value-type-valuetype"><div class="header-wrapper"><h3 id="x4-6-value-type-valuetype"><bdi class="secno">4.6 </bdi>Value type (<code>ValueType</code>)</h3><a class="self-link" href="#value-type-valuetype" aria-label="Permalink for Section 4.6"></a></div>
+<p>A <dfn id="dfn-value-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">value type</dfn> is a type of an <a data-link-type="dfn|abstract-op" href="#dfn-attribute" class="internalDFN" id="ref-for-dfn-attribute-1">attribute</a>-expressing <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>1..1</td>
+<td>The name of the value type.</td>
+</tr>
+</tbody></table>
+<section id="scalar-type-scalartype"><div class="header-wrapper"><h4 id="x4-6-1-scalar-type-scalartype"><bdi class="secno">4.6.1 </bdi>Scalar type (<code>ScalarType</code>)</h4><a class="self-link" href="#scalar-type-scalartype" aria-label="Permalink for Section 4.6.1"></a></div>
+<p>A <dfn id="dfn-scalar-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">scalar type</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-value-type" class="internalDFN" id="ref-for-dfn-value-type-2">value type</a> which is a scalar.</p>
+<p>Common examples of scalars are:</p>
+<ul>
+<li>String</li>
+<li>Integer</li>
+<li>Boolean</li>
+</ul>
+</section><section id="geometry-type-geometrytype"><div class="header-wrapper"><h4 id="x4-6-2-geometry-type-geometrytype"><bdi class="secno">4.6.2 </bdi>Geometry type (<code>GeometryType</code>)</h4><a class="self-link" href="#geometry-type-geometrytype" aria-label="Permalink for Section 4.6.2"></a></div>
+<p>A <dfn id="dfn-geometry-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">geometry type</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-value-type" class="internalDFN" id="ref-for-dfn-value-type-3">value type</a> which represents a geometry.</p>
+</section></section></section>
+<section id="mapping-abstract-model"><div class="header-wrapper"><h2 id="x5-mapping-abstract-model"><bdi class="secno">5. </bdi>Mapping abstract model</h2><a class="self-link" href="#mapping-abstract-model" aria-label="Permalink for Section 5."></a></div>
+<p>The following model implements the model defined in chapter 4 into a model containing all the necessary mapping rules. Objecttype mappping, path mapping (navigating through a source model) and property mapping are the basic concepts. Operators as result combiner, result mapper and matcher allow for defining complex combinations of chained results.</p>
+<p>
+      </p><figure id="fig-imx-model-mapping">
+        <img src="media/imx-mapping-model.drawio.png" alt="IMX Model Mapping">
+        <figcaption><a class="self-link" href="#fig-imx-model-mapping">Figure <bdi class="figno">3</bdi></a> <span class="fig-title">IMX Model Mapping</span></figcaption>
+      </figure>
+    <p></p>
+<section id="source-model-sourcemodel"><div class="header-wrapper"><h3 id="x5-1-source-model-sourcemodel"><bdi class="secno">5.1 </bdi>Source model (<code>SourceModel</code>)</h3><a class="self-link" href="#source-model-sourcemodel" aria-label="Permalink for Section 5.1"></a></div>
+<p>A <dfn data-plurals="source models" id="dfn-source-model" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">source model</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-model" class="internalDFN" id="ref-for-dfn-model-1">model</a> which is used to define the structure of <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-source-data-source" class="internalDFN" id="ref-for-dfn-source-data-source-3">source data source</a> in an <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-7">IMX orchestration process</a>.</p>
+</section><section id="target-model-targetmodel"><div class="header-wrapper"><h3 id="x5-2-target-model-targetmodel"><bdi class="secno">5.2 </bdi>Target model (<code>TargetModel</code>)</h3><a class="self-link" href="#target-model-targetmodel" aria-label="Permalink for Section 5.2"></a></div>
+<p>A <dfn id="dfn-target-model" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">target model</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-model" class="internalDFN" id="ref-for-dfn-model-2">model</a> which is used to define the structure of <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> in the <a data-link-type="dfn|abstract-op" href="#dfn-target-data-source" class="internalDFN" id="ref-for-dfn-target-data-source-3">target data source</a> in an <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-8">IMX orchestration process</a>.</p>
+</section><section id="model-mapping-modelmapping"><div class="header-wrapper"><h3 id="x5-3-model-mapping-modelmapping"><bdi class="secno">5.3 </bdi>Model mapping (<code>ModelMapping</code>)</h3><a class="self-link" href="#model-mapping-modelmapping" aria-label="Permalink for Section 5.3"></a></div>
+<p>A <dfn data-lt="IMX model mapping|IMX mapping|model mapping" id="dfn-imx-model-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">model mapping</dfn> is a set of declarations which afford the combination and translation of one ore more source data model based data sources to a target data model based data source.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>targetModel</td>
+<td>1..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-4">target model</a>.</td>
+</tr>
+<tr>
+<td>sourceModel</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-4">source model</a>.</td>
+</tr>
+<tr>
+<td>sourceRelation</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-1">source relation mapping</a>.</td>
+</tr>
+<tr>
+<td>objectTypeMapping</td>
+<td>1..*</td>
+<td>A relation pointing to an <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-1">object type mapping</a>.</td>
+</tr>
+<tr>
+<td>pathMapping</td>
+<td>0..*</td>
+<td>A relation pointing to a reusable named <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-1">path mapping</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="object-type-ref-objecttyperef"><div class="header-wrapper"><h3 id="x5-4-object-type-ref-objecttyperef"><bdi class="secno">5.4 </bdi>Object type ref (<code>ObjectTypeRef</code>)</h3><a class="self-link" href="#object-type-ref-objecttyperef" aria-label="Permalink for Section 5.4"></a></div>
+<p>An <dfn id="dfn-object-type-ref" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">object type ref</dfn> represents a reference to an <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-5">object type</a>. A reference is expressed using a <a data-link-type="dfn|abstract-op" href="#dfn-alias" class="internalDFN" id="ref-for-dfn-alias-1">model alias</a> and the name of an <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-6">object type</a>.</p>
+<p>A <dfn data-lt="alias|model alias" id="dfn-alias" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">model alias</dfn> is a string of characters that uniquely identifies a model in an <a data-link-type="dfn|abstract-op" href="#dfn-orchestration-process" class="internalDFN" id="ref-for-dfn-orchestration-process-9">IMX orchestration process</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>modelAlias</td>
+<td>1..1</td>
+<td>The <a data-link-type="dfn|abstract-op" href="#dfn-alias" class="internalDFN" id="ref-for-dfn-alias-2">alias</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-5">source model</a>.</td>
+</tr>
+<tr>
+<td>objectTypeName</td>
+<td>1..1</td>
+<td>The name of the <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-7">object type</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="source-root-sourceroot"><div class="header-wrapper"><h3 id="x5-5-source-root-sourceroot"><bdi class="secno">5.5 </bdi>Source root (<code>SourceRoot</code>)</h3><a class="self-link" href="#source-root-sourceroot" aria-label="Permalink for Section 5.5"></a></div>
+<p>A <dfn id="dfn-source-root" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">source root</dfn> is a set of declarations which express the starting point for <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-2">path</a> evaluations.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>1..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-object-type-ref" class="internalDFN" id="ref-for-dfn-object-type-ref-1">object type ref</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="source-relation-mapping-sourcerelationmapping"><div class="header-wrapper"><h3 id="x5-6-source-relation-mapping-sourcerelationmapping"><bdi class="secno">5.6 </bdi>Source relation mapping (<code>SourceRelationMapping</code>)</h3><a class="self-link" href="#source-relation-mapping-sourcerelationmapping" aria-label="Permalink for Section 5.6"></a></div>
+<p>A <dfn id="dfn-source-relation-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">source relation mapping</dfn> is a set of declarations which define a virtual relation between object types in one or more source models. Virtual, in that the relation does not actually exist in the source models, but exists for the mapping process, through this mapping.</p>
+<p>A relation defined through a <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-2">source relation mapping</a> can be used just as any other relation within <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-2">object type mappings</a>.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sourceType</td>
+<td>1..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-object-type-ref" class="internalDFN" id="ref-for-dfn-object-type-ref-2">object type ref</a>, indicating the source object type of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-3">relation</a>.</td>
+</tr>
+<tr>
+<td>property</td>
+<td>1..1</td>
+<td>A relation pointing to a newly defined <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-4">relation</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="object-type-mapping-objecttypemapping"><div class="header-wrapper"><h3 id="x5-7-object-type-mapping-objecttypemapping"><bdi class="secno">5.7 </bdi>Object type mapping (<code>ObjectTypeMapping</code>)</h3><a class="self-link" href="#object-type-mapping-objecttypemapping" aria-label="Permalink for Section 5.7"></a></div>
+<p>An <dfn data-plurals="object type mappings" id="dfn-object-type-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">object type mapping</dfn> is a set of declarations which express the mapping of one or more <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-6">source model</a> based <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> using its <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping-set" class="internalDFN" id="ref-for-dfn-object-type-mapping-set-1">object type mapping sets</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>objectTypeName</td>
+<td>0..*</td>
+<td>The name of the <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-8">object type</a> in the target model which is the target of this object type mapping.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mappingSet</td>
+<td>1..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping-set" class="internalDFN" id="ref-for-dfn-object-type-mapping-set-2">object type mapping set</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="object-type-mapping-set-objecttypemappingset"><div class="header-wrapper"><h3 id="x5-8-object-type-mapping-set-objecttypemappingset"><bdi class="secno">5.8 </bdi>Object type mapping set (<code>ObjectTypeMappingSet</code>)</h3><a class="self-link" href="#object-type-mapping-set-objecttypemappingset" aria-label="Permalink for Section 5.8"></a></div>
+<p>An <dfn data-plurals="object type mapping sets" id="dfn-object-type-mapping-set" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">object type mapping set</dfn> is a set of declarations which express the mapping of one or more <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> using a specicic <a data-link-type="dfn|abstract-op" href="#dfn-source-root" class="internalDFN" id="ref-for-dfn-source-root-1">source root</a> to a target-model-object-type-based <a data-link-type="dfn|abstract-op" href="#dfn-data-object" class="internalDFN" id="ref-for-dfn-data-object-1">data object</a>.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sourceModel</td>
+<td>1..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-7">source model</a>.</td>
+</tr>
+<tr>
+<td>targetModel</td>
+<td>1..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-5">target model</a>.</td>
+</tr>
+<tr>
+<td>sourceRoot</td>
+<td>1..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-object-type-ref" class="internalDFN" id="ref-for-dfn-object-type-ref-3">object type ref</a>.</td>
+</tr>
+<tr>
+<td>propertyMapping</td>
+<td>0..*</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-property-mapping" class="internalDFN" id="ref-for-dfn-property-mapping-1">property mapping</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="property-mapping-propertymapping"><div class="header-wrapper"><h3 id="x5-9-property-mapping-propertymapping"><bdi class="secno">5.9 </bdi>Property mapping (<code>PropertyMapping</code>)</h3><a class="self-link" href="#property-mapping-propertymapping" aria-label="Permalink for Section 5.9"></a></div>
+<p>A <dfn id="dfn-property-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">property mapping</dfn> is a set of declarations which express the mapping of a target <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-9">object type</a> <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-11">property</a> within an <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-3">object type mapping</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-property-mapping" class="internalDFN" id="ref-for-dfn-property-mapping-2">property mapping</a> can be expressed through a sinlge <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-2">path mapping</a>, or can be the result of a combination of <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-3">path mappings</a> by applying its specified combiner.</p>
+<aside class="todo">TODO: default combiner??</aside>
+
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>propertyName</td>
+<td>0..*</td>
+<td>The name of the <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-12">property</a> in the target model which is the target of this property type mapping.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pathMapping</td>
+<td>0..*</td>
+<td>A relation that results in an ordered, non-unique sequence of <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-4">path mappings</a>.</td>
+</tr>
+<tr>
+<td>combiner</td>
+<td>0..1</td>
+<td>A relation pointing to a <a data-link-type="dfn|abstract-op" href="#dfn-result-combiner" class="internalDFN" id="ref-for-dfn-result-combiner-1">result combiner</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="path-mapping-pathmapping"><div class="header-wrapper"><h3 id="x5-10-path-mapping-pathmapping"><bdi class="secno">5.10 </bdi>Path mapping (<code>PathMapping</code>)</h3><a class="self-link" href="#path-mapping-pathmapping" aria-label="Permalink for Section 5.10"></a></div>
+<p>A <dfn data-plurals="path mappings" id="dfn-path-mapping" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">path mapping</dfn> is a set of declarations which express references to <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a> of <a data-link-type="dfn|abstract-op" href="#dfn-data-object" class="internalDFN" id="ref-for-dfn-data-object-2">data objects</a> of <a data-link-type="dfn|abstract-op" href="#dfn-source-data-source" class="internalDFN" id="ref-for-dfn-source-data-source-4">source data sources</a> and actions on those.</p>
+<p>A <dfn data-plurals="path mapping evaluations" id="dfn-path-mapping-evaluation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">path mapping evaluation</dfn> is the evaluation of a <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-5">path mapping</a> yielding a <dfn id="dfn-path-mapping-result" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">path mapping result</dfn>, which serves as input for the <a data-link-type="dfn|abstract-op" href="#dfn-property-mapping" class="internalDFN" id="ref-for-dfn-property-mapping-3">property mapping</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>0..*</td>
+<td>The name of the <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-6">path mapping</a>.</td>
+</tr>
+</tbody></table>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>path</td>
+<td>1..1</td>
+<td>A relation that points to a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-3">path</a>.</td>
+</tr>
+<tr>
+<td>andThen</td>
+<td>0..*</td>
+<td>A relation that results in an ordered, non-unique sequence of <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-7">path mappings</a> that are to be evaluated after this path mapping.</td>
+</tr>
+<tr>
+<td>map</td>
+<td>0..*</td>
+<td>A relation that results in an ordered, non-unique sequence of <a data-link-type="dfn|abstract-op" href="#dfn-result-mapper" class="internalDFN" id="ref-for-dfn-result-mapper-1">result mappers</a>.</td>
+</tr>
+<tr>
+<td>ifMatch</td>
+<td>0..1</td>
+<td>A relation that points to a <a data-link-type="dfn|abstract-op" href="#dfn-matcher" class="internalDFN" id="ref-for-dfn-matcher-1">matcher</a>.</td>
+</tr>
+<tr>
+<td>ifMatchType</td>
+<td>0..1</td>
+<td>A relation that points to a <a data-link-type="dfn|abstract-op" href="#dfn-object-type-ref" class="internalDFN" id="ref-for-dfn-object-type-ref-4">object type ref</a>.</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td>0..1</td>
+<td>A relation that points to a <a data-link-type="dfn|abstract-op" href="#dfn-path-repeat" class="internalDFN" id="ref-for-dfn-path-repeat-1">path repeat</a>.</td>
+</tr>
+</tbody></table>
+</section><section id="path-path"><div class="header-wrapper"><h3 id="x5-11-path-path"><bdi class="secno">5.11 </bdi>Path (<code>Path</code>)</h3><a class="self-link" href="#path-path" aria-label="Permalink for Section 5.11"></a></div>
+<p>A <dfn data-lt="path expression|path" data-plurals="path expressions" id="dfn-path-expression" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">path</dfn>, or path expression, is a set of declarations which, conceptually, represent a possible route through a graph of <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data items</a>. A <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-4">path</a> is comprised of an ordered, non-unique sequence of <a data-link-type="dfn|abstract-op" href="#dfn-segment" class="internalDFN" id="ref-for-dfn-segment-1">segments</a>. Each segment represents a step in that route.</p>
+<p>A <dfn data-plurals="segments" id="dfn-segment" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">segment</dfn> is a string that represents a <a data-link-type="dfn|abstract-op" href="#dfn-property-reference" class="internalDFN" id="ref-for-dfn-property-reference-1">property reference</a>.</p>
+<p>A <dfn id="dfn-property-reference" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">property reference</dfn> is a string that matches the name of a <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-13">property</a> in a <a href="https://geonovum.github.io/IMX-Metadata/#dfn-data-item">data item</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-source-data-source" class="internalDFN" id="ref-for-dfn-source-data-source-5">source data source</a>.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>segment</td>
+<td>1..*</td>
+<td>An ordered, non-unique sequence of <a data-link-type="dfn|abstract-op" href="#dfn-segment" class="internalDFN" id="ref-for-dfn-segment-2">segment</a> strings.</td>
+</tr>
+</tbody></table>
+</section><section id="path-repeat-pathrepeat"><div class="header-wrapper"><h3 id="x5-12-path-repeat-pathrepeat"><bdi class="secno">5.12 </bdi>Path repeat (<code>PathRepeat</code>)</h3><a class="self-link" href="#path-repeat-pathrepeat" aria-label="Permalink for Section 5.12"></a></div>
+<p>A <dfn id="dfn-path-repeat" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">path repeat</dfn> is a set of declarations which describe how the <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-evaluation" class="internalDFN" id="ref-for-dfn-path-mapping-evaluation-1">path mapping evaluation</a> should be repeated.</p>
+<p><em>Overview relations</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>untilMatch</td>
+<td>1..1</td>
+<td>A relation that points to a <a data-link-type="dfn|abstract-op" href="#dfn-matcher" class="internalDFN" id="ref-for-dfn-matcher-2">matcher</a>, which, when it matches, stops the repetition.</td>
+</tr>
+</tbody></table>
+</section><section id="component-component"><div class="header-wrapper"><h3 id="x5-13-component-component"><bdi class="secno">5.13 </bdi>Component (<code>Component</code>)</h3><a class="self-link" href="#component-component" aria-label="Permalink for Section 5.13"></a></div>
+<p>A <dfn id="dfn-component" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">component</dfn> is an abstract class of things that can process the result of one or more <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-evaluation" class="internalDFN" id="ref-for-dfn-path-mapping-evaluation-2">path mapping evaluations</a> and produce a new result.</p>
+<p><em>Overview attributes</em></p>
+<table class="simple">
+<thead>
+<tr>
+<th>Name</th>
+<th>Multiplicity</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>1..1</td>
+<td>The type of the component.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>0..1</td>
+<td>A map (String -&gt; Object) of options that the component can use to create results.</td>
+</tr>
+</tbody></table>
+<section id="result-combiner-resultcombiner"><div class="header-wrapper"><h4 id="x5-13-1-result-combiner-resultcombiner"><bdi class="secno">5.13.1 </bdi>Result combiner (<code>ResultCombiner</code>)</h4><a class="self-link" href="#result-combiner-resultcombiner" aria-label="Permalink for Section 5.13.1"></a></div>
+<p>A <dfn id="dfn-result-combiner" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">result combiner</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component" class="internalDFN" id="ref-for-dfn-component-1">component</a> which takes as input the result of a previous element in a sequence and combines it with the current element in the sequence.</p>
+</section><section id="result-mapper-resultmapper"><div class="header-wrapper"><h4 id="x5-13-2-result-mapper-resultmapper"><bdi class="secno">5.13.2 </bdi>Result mapper (<code>ResultMapper</code>)</h4><a class="self-link" href="#result-mapper-resultmapper" aria-label="Permalink for Section 5.13.2"></a></div>
+<p>A <dfn data-plurals="result mappers" id="dfn-result-mapper" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">result mapper</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component" class="internalDFN" id="ref-for-dfn-component-2">component</a> which takes the result of a <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-evaluation" class="internalDFN" id="ref-for-dfn-path-mapping-evaluation-3">path mapping evaluation</a> and maps it to a new result.</p>
+</section><section id="matcher-resultmatcher"><div class="header-wrapper"><h4 id="x5-13-3-matcher-resultmatcher"><bdi class="secno">5.13.3 </bdi>Matcher (<code>ResultMatcher</code>)</h4><a class="self-link" href="#matcher-resultmatcher" aria-label="Permalink for Section 5.13.3"></a></div>
+<p>A <dfn id="dfn-matcher" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">matcher</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component" class="internalDFN" id="ref-for-dfn-component-3">component</a> which takes the result of a <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-evaluation" class="internalDFN" id="ref-for-dfn-path-mapping-evaluation-4">path mapping evaluation</a> and returns true when it matches the result and false when it does not.</p>
+</section></section></section>
+<section id="yaml-imx-model-mapping-specification"><div class="header-wrapper"><h2 id="x6-yaml-imx-model-mapping-specification"><bdi class="secno">6. </bdi>YAML IMX Model Mapping specification</h2><a class="self-link" href="#yaml-imx-model-mapping-specification" aria-label="Permalink for Section 6."></a></div>
+<p>A <dfn id="dfn-yaml-ixm-model-mapping-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">YAML IXM Model Mapping document</dfn> is a concrete representation of an instance of a <a data-link-type="dfn|abstract-op" href="#dfn-imx-model-mapping" class="internalDFN" id="ref-for-dfn-imx-model-mapping-4">model mapping</a> expressed in [<cite><a class="bibref" data-link-type="biblio" href="#bib-yaml" title="YAML Ain’t Markup Language (YAML™) Version 1.2">YAML</a></cite>].</p>
+<section id="encoding"><div class="header-wrapper"><h3 id="x6-1-encoding"><bdi class="secno">6.1 </bdi>Encoding</h3><a class="self-link" href="#encoding" aria-label="Permalink for Section 6.1"></a></div>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-yaml-ixm-model-mapping-document" class="internalDFN" id="ref-for-dfn-yaml-ixm-model-mapping-document-1">YAML IXM Model Mapping document</a> <em class="rfc2119">MUST</em> be encoded in [<cite><a class="bibref" data-link-type="biblio" href="#bib-utf-8" title="UTF-8, a transformation format of ISO 10646">UTF-8</a></cite>].</p>
+</section><section id="mapping-definitions"><div class="header-wrapper"><h3 id="x6-2-mapping-definitions"><bdi class="secno">6.2 </bdi>Mapping definitions</h3><a class="self-link" href="#mapping-definitions" aria-label="Permalink for Section 6.2"></a></div>
+<section id="modelmapping"><div class="header-wrapper"><h4 id="x6-2-1-modelmapping"><bdi class="secno">6.2.1 </bdi><code>ModelMapping</code></h4><a class="self-link" href="#modelmapping" aria-label="Permalink for Section 6.2.1"></a></div>
+<p>The root node of a mapping document, the <dfn id="dfn-modelmapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ModelMapping</code> node</dfn> represents the <a data-link-type="dfn|abstract-op" href="#dfn-imx-model-mapping" class="internalDFN" id="ref-for-dfn-imx-model-mapping-5">model mapping</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-modelmapping-node" class="internalDFN" id="ref-for-dfn-modelmapping-node-1">ModelMapping node</a> <em class="rfc2119">MUST</em> express exactly one <code>sourceModels</code> key, of which the value is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> of <a data-link-type="dfn|abstract-op" href="#dfn-sourcemodel-node" class="internalDFN" id="ref-for-dfn-sourcemodel-node-1">SourceModel nodes</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-modelmapping-node" class="internalDFN" id="ref-for-dfn-modelmapping-node-2">ModelMapping node</a> <em class="rfc2119">MUST</em> express exactly one <code>targetModel</code> key, of which the value is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> of <a data-link-type="dfn|abstract-op" href="#dfn-targetmodel-node" class="internalDFN" id="ref-for-dfn-targetmodel-node-1">TargetModel nodes</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-modelmapping-node" class="internalDFN" id="ref-for-dfn-modelmapping-node-3">ModelMapping node</a> <em class="rfc2119">MUST</em> express zero or one <code>sourceRelations</code> key, of which the value is a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a> of <a data-link-type="dfn|abstract-op" href="#dfn-sourcerelation-node" class="internalDFN" id="ref-for-dfn-sourcerelation-node-1">SourceRelation nodes</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-modelmapping-node" class="internalDFN" id="ref-for-dfn-modelmapping-node-4">ModelMapping node</a> <em class="rfc2119">MUST</em> express zero or one <code>objectTypeMappings</code> key, of which the value is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> of <a data-link-type="dfn|abstract-op" href="#dfn-objecttypemapping-node" class="internalDFN" id="ref-for-dfn-objecttypemapping-node-1">ObjectTypeMapping nodes</a>.</p>
+
+
+<aside class="example" id="example-model-mapping-root-node"><div class="marker">
+    <a class="self-link" href="#example-model-mapping-root-node">Example<bdi> 2</bdi></a><span class="example-title">: model mapping root node</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">sourceModels: ...
+targetModel: ...
+sourceRelations: ...
+objectTypeMappings: ...
+</code></pre>
+</aside>
+
+</section><section id="sourcemodel"><div class="header-wrapper"><h4 id="x6-2-2-sourcemodel"><bdi class="secno">6.2.2 </bdi><code>SourceModel</code></h4><a class="self-link" href="#sourcemodel" aria-label="Permalink for Section 6.2.2"></a></div>
+<p>A <dfn data-plurals="sourcemodel nodes" id="dfn-sourcemodel-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>SourceModel</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-8">source model</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a> of <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pairs</a>. The key of each <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is the <a data-link-type="dfn|abstract-op" href="#dfn-alias" class="internalDFN" id="ref-for-dfn-alias-3">model alias</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-9">source model</a>. The value in the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is a <a data-link-type="dfn|abstract-op" href="#dfn-modelreference-node" class="internalDFN" id="ref-for-dfn-modelreference-node-1">ModelReference node</a> referencing the <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-10">source model</a> definitions.</p>
+</section><section id="targetmodel"><div class="header-wrapper"><h4 id="x6-2-3-targetmodel"><bdi class="secno">6.2.3 </bdi><code>TargetModel</code></h4><a class="self-link" href="#targetmodel" aria-label="Permalink for Section 6.2.3"></a></div>
+<p>A <dfn data-plurals="targetmodel nodes" id="dfn-targetmodel-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>TargetModel</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-6">target model</a>. It is represented by a 
+<a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a>. The key of the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is the <a data-link-type="dfn|abstract-op" href="#dfn-alias" class="internalDFN" id="ref-for-dfn-alias-4">model alias</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-7">target model</a>. The value in the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is a <a data-link-type="dfn|abstract-op" href="#dfn-modelreference-node" class="internalDFN" id="ref-for-dfn-modelreference-node-2">ModelReference node</a> referencing the <a data-link-type="dfn|abstract-op" href="#dfn-target-model" class="internalDFN" id="ref-for-dfn-target-model-8">target model</a> definitions.</p>
+</section><section id="modelreference"><div class="header-wrapper"><h4 id="x6-2-4-modelreference"><bdi class="secno">6.2.4 </bdi><code>ModelReference</code></h4><a class="self-link" href="#modelreference" aria-label="Permalink for Section 6.2.4"></a></div>
+<p>A <dfn id="dfn-modelreference-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ModelReference</code> node</dfn> is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a>. 
+The <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> <em class="rfc2119">MUST</em> have:</p>
+<ul>
+<li>a key <code>location</code>, whose value is a string which expresses the file path of the mapping source file.</li>
+<li>a key <code>profile</code>, whose value is a string which identifies the profile of the model. The profile will be used to by the orchestration engine to load the model using the appropriate model loader.</li>
+</ul>
+<aside class="example" id="example-source-and-target-model-specification"><div class="marker">
+    <a class="self-link" href="#example-source-and-target-model-specification">Example<bdi> 3</bdi></a><span class="example-title">: source and target model specification</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">sourceModels:
+  - bag:
+      location: /models/bag/imbag.xml
+      profile: MIM
+  - bgt:
+      location: /models/imgeo/imgeo.xml
+      profile: MIM
+
+targetModel:
+  imx-geo:
+    location: /models/imx-geo/imx-geo.xml
+    profile: MIM
+
+objectTypeMappings: ...
+</code></pre>
+</aside>
+
+</section><section id="sourcerelation"><div class="header-wrapper"><h4 id="x6-2-5-sourcerelation"><bdi class="secno">6.2.5 </bdi><code>SourceRelation</code></h4><a class="self-link" href="#sourcerelation" aria-label="Permalink for Section 6.2.5"></a></div>
+<p>A <dfn data-plurals="sourcerelation nodes" id="dfn-sourcerelation-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>SourceRelation</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-3">source relation mapping</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a>. </p>
+<p>It <em class="rfc2119">MUST</em> have a <code>sourceType</code> key, whose value is an <a data-link-type="dfn|abstract-op" href="#dfn-objecttyperef-node" class="internalDFN" id="ref-for-dfn-objecttyperef-node-1">ObjectTypeRef node</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>property</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-property-node" class="internalDFN" id="ref-for-dfn-property-node-1">Property node</a>.</p>
+</section><section id="property"><div class="header-wrapper"><h4 id="x6-2-6-property"><bdi class="secno">6.2.6 </bdi><code>Property</code></h4><a class="self-link" href="#property" aria-label="Permalink for Section 6.2.6"></a></div>
+<p>A <dfn id="dfn-property-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>Property</code> node</dfn> is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> representing a <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-5">relation</a> <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-14">property</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>name</code> key with a string value representing the name of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-6">relation</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>target</code> key with an <a data-link-type="dfn|abstract-op" href="#dfn-objecttyperef-node" class="internalDFN" id="ref-for-dfn-objecttyperef-node-2">ObjectTypeRef node</a> value, representing the target <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-10">object type</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-7">relation</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>cardinality</code> key with a valid cardinality string value.</p>
+<p>It <em class="rfc2119">MUST</em> have an <code>inverseName</code> key with a string value representing the inverse name of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-8">relation</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have an <code>inverseCardinality</code> key with a string value representing the inverse cardinality of the <a data-link-type="dfn|abstract-op" href="#dfn-relation" class="internalDFN" id="ref-for-dfn-relation-9">relation</a>.</p>
+<p>It <em class="rfc2119">MUST</em> either have:</p>
+<ul>
+<li>a <code>keyMapping</code> key whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-keymapping-node" class="internalDFN" id="ref-for-dfn-keymapping-node-1">KeyMapping node</a>.</li>
+<li>a <code>filterMappings</code> key whose value is a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a> of <a data-link-type="dfn|abstract-op" href="#dfn-filtermapping-node" class="internalDFN" id="ref-for-dfn-filtermapping-node-1">FilterMapping nodes</a>.</li>
+</ul>
+</section><section id="keymapping"><div class="header-wrapper"><h4 id="x6-2-7-keymapping"><bdi class="secno">6.2.7 </bdi><code>KeyMapping</code></h4><a class="self-link" href="#keymapping" aria-label="Permalink for Section 6.2.7"></a></div>
+<p>A <dfn id="dfn-keymapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>KeyMapping</code> node</dfn> is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> which defines the match of a <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-4">source relation mapping</a>'s target object's key property, by using the name of the key properties as its keys and the names of the key value matching properties of the <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-5">source relation mapping</a>'s source object as the corresponding values.</p>
+</section><section id="filtermapping"><div class="header-wrapper"><h4 id="x6-2-8-filtermapping"><bdi class="secno">6.2.8 </bdi><code>FilterMapping</code></h4><a class="self-link" href="#filtermapping" aria-label="Permalink for Section 6.2.8"></a></div>
+<p>A <dfn data-plurals="filtermapping nodes" id="dfn-filtermapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>FilterMapping</code> node</dfn> is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> representing a <a data-link-type="dfn|abstract-op" href="#dfn-filter-mapping" class="internalDFN" id="ref-for-dfn-filter-mapping-2">filter mapping</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>property</code> key with a string value property reference, that is the value of the name of the referenced property of the <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-6">source relation mapping</a>'s target object.</p>
+<p>It <em class="rfc2119">MUST</em> have an <code>operator</code> key whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-filteroperator-node" class="internalDFN" id="ref-for-dfn-filteroperator-node-1">FilterOperator node</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>sourcePath</code> key whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-path-node" class="internalDFN" id="ref-for-dfn-path-node-1">Path node</a> which expresses a value of the relation the <a data-link-type="dfn|abstract-op" href="#dfn-source-relation-mapping" class="internalDFN" id="ref-for-dfn-source-relation-mapping-7">source relation mapping</a>'s source object.</p>
+</section><section id="filteroperator"><div class="header-wrapper"><h4 id="x6-2-9-filteroperator"><bdi class="secno">6.2.9 </bdi><code>FilterOperator</code></h4><a class="self-link" href="#filteroperator" aria-label="Permalink for Section 6.2.9"></a></div>
+<p>A <dfn id="dfn-filteroperator-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>FilterOperator</code> node</dfn> is a  <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> representing a <a data-link-type="dfn|abstract-op" href="#dfn-operator" class="internalDFN" id="ref-for-dfn-operator-2">filter operator</a>.</p>
+<p>It <em class="rfc2119">MUST</em> have a <code>type</code> key with a string value indicating the type of operator.</p>
+</section><section id="objecttypemapping"><div class="header-wrapper"><h4 id="x6-2-10-objecttypemapping"><bdi class="secno">6.2.10 </bdi><code>ObjectTypeMapping</code></h4><a class="self-link" href="#objecttypemapping" aria-label="Permalink for Section 6.2.10"></a></div>
+<p>An <dfn data-plurals="objecttypemapping nodes" id="dfn-objecttypemapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ObjectTypeMapping</code> node</dfn> expresses an <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-4">object type mapping</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> within the <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> that is the value of the <code>objectTypeMappings</code> key. The key in the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is the <code>objectTypeName</code> of the <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-5">object type mapping</a>. The value in the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a> that represents the set of <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping-set" class="internalDFN" id="ref-for-dfn-object-type-mapping-set-3">object type mapping sets</a> of which each item is a<a data-link-type="dfn|abstract-op" href="#dfn-objecttypemappingset-node" class="internalDFN" id="ref-for-dfn-objecttypemappingset-node-1">ObjectTypeMappingSet node</a></p>
+<div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><aside class="">
+Note that the <code>mappingSets</code> relation from the <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping" class="internalDFN" id="ref-for-dfn-object-type-mapping-6">object type mapping</a> is implicit.
+</aside></div>
+
+</section><section id="objecttypemappingset"><div class="header-wrapper"><h4 id="x6-2-11-objecttypemappingset"><bdi class="secno">6.2.11 </bdi><code>ObjectTypeMappingSet</code></h4><a class="self-link" href="#objecttypemappingset" aria-label="Permalink for Section 6.2.11"></a></div>
+<p>An <dfn id="dfn-objecttypemappingset-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ObjectTypeMappingSet</code> node</dfn> expresses an <a data-link-type="dfn|abstract-op" href="#dfn-object-type-mapping-set" class="internalDFN" id="ref-for-dfn-object-type-mapping-set-4">object type mapping set</a>.</p>
+<p>An <a data-link-type="dfn|abstract-op" href="#dfn-objecttypemappingset-node" class="internalDFN" id="ref-for-dfn-objecttypemappingset-node-2">ObjectTypeMappingSet node</a> <em class="rfc2119">MUST</em> have a <code>sourceRoot</code> key, which represents the <a data-link-type="dfn|abstract-op" href="#dfn-source-root" class="internalDFN" id="ref-for-dfn-source-root-2">source root</a> and whose value <em class="rfc2119">MUST</em> be an <a data-link-type="dfn|abstract-op" href="#dfn-objecttyperef-node" class="internalDFN" id="ref-for-dfn-objecttyperef-node-3">ObjecttypeRef node</a> as a shorthand for the <a data-link-type="dfn|abstract-op" href="#dfn-sourceroot-node" class="internalDFN" id="ref-for-dfn-sourceroot-node-1">SourceRoot node</a>.</p>
+<p>An <a data-link-type="dfn|abstract-op" href="#dfn-objecttypemapping-node" class="internalDFN" id="ref-for-dfn-objecttypemapping-node-2">ObjectTypeMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>propertyMappings</code> key, whose value is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> representing <a data-link-type="dfn|abstract-op" href="#dfn-propertymapping-node" class="internalDFN" id="ref-for-dfn-propertymapping-node-1">PropertyMapping nodes</a>.</p>
+<aside class="example" id="example-object-type-mapping-with-object-type-mapping-sets"><div class="marker">
+    <a class="self-link" href="#example-object-type-mapping-with-object-type-mapping-sets">Example<bdi> 4</bdi></a><span class="example-title">: object type mapping with object type mapping sets</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">objectTypeMappings:
+
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings: ...
+    
+  Gebouw:
+    - sourceRoot: bgt:Pand
+      propertyMappings: ...
+    - sourceRoot: bgt:OverigBouwwerk
+      propertyMappings: ...
+</code></pre>
+</aside>
+
+</section><section id="sourceroot"><div class="header-wrapper"><h4 id="x6-2-12-sourceroot"><bdi class="secno">6.2.12 </bdi><code>SourceRoot</code></h4><a class="self-link" href="#sourceroot" aria-label="Permalink for Section 6.2.12"></a></div>
+<p>A <dfn id="dfn-sourceroot-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>SourceRoot</code> node</dfn> represents a <a data-link-type="dfn|abstract-op" href="#dfn-source-root" class="internalDFN" id="ref-for-dfn-source-root-3">source root</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a>. The <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> <em class="rfc2119">MUST</em> have a key <code>type</code> whose value is an <a data-link-type="dfn|abstract-op" href="#dfn-objecttyperef-node" class="internalDFN" id="ref-for-dfn-objecttyperef-node-4">ObjectTypeRef node</a>.</p>
+</section><section id="objecttyperef"><div class="header-wrapper"><h4 id="x6-2-13-objecttyperef"><bdi class="secno">6.2.13 </bdi><code>ObjectTypeRef</code></h4><a class="self-link" href="#objecttyperef" aria-label="Permalink for Section 6.2.13"></a></div>
+<p>An <dfn id="dfn-objecttyperef-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ObjectTypeRef</code> node</dfn> represents an <a data-link-type="dfn|abstract-op" href="#dfn-object-type-ref" class="internalDFN" id="ref-for-dfn-object-type-ref-5">object type ref</a>. It is a <a href="https://yaml.org/spec/1.2.2/#10113-generic-string">generic string</a> <a href="https://yaml.org/spec/1.2.2/#scalar">scalar node</a> with the following pattern <code>{modelAlias}:{objectTypeName}</code>, where <code>{modelAlias}</code> is the <a data-link-type="dfn|abstract-op" href="#dfn-alias" class="internalDFN" id="ref-for-dfn-alias-5">model alias</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-source-model" class="internalDFN" id="ref-for-dfn-source-model-11">source model</a>, and <code>{objectTypeName}</code> is the name of the <a data-link-type="dfn|abstract-op" href="#dfn-object-type" class="internalDFN" id="ref-for-dfn-object-type-11">object type</a> in that source model.</p>
+</section><section id="propertymapping"><div class="header-wrapper"><h4 id="x6-2-14-propertymapping"><bdi class="secno">6.2.14 </bdi><code>PropertyMapping</code></h4><a class="self-link" href="#propertymapping" aria-label="Permalink for Section 6.2.14"></a></div>
+<p>A <dfn data-plurals="propertymapping nodes" id="dfn-propertymapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>PropertyMapping</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-property-mapping" class="internalDFN" id="ref-for-dfn-property-mapping-4">property mapping</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> within the <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> that is the value of the <code>propertyMappings</code> key. The key in the <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a> is the <code>propertyName</code> of the <a data-link-type="dfn|abstract-op" href="#dfn-property-mapping" class="internalDFN" id="ref-for-dfn-property-mapping-5">Property Mapping</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-propertymapping-node" class="internalDFN" id="ref-for-dfn-propertymapping-node-2">PropertyMapping node</a> <em class="rfc2119">MUST</em> have one <code>pathMappings</code> or <code>pathMapping</code> key, whose value is a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a>, representing <a data-link-type="dfn|abstract-op" href="#dfn-pathmapping-node" class="internalDFN" id="ref-for-dfn-pathmapping-node-1">PathMapping nodes</a>, or a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a>, representing a <a data-link-type="dfn|abstract-op" href="#dfn-pathmapping-node" class="internalDFN" id="ref-for-dfn-pathmapping-node-2">PathMapping node</a> respectively.</p>
+<p>The evaluation of the <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-8">path mapping</a>(s) <em class="rfc2119">SHOULD</em> yield a <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-result" class="internalDFN" id="ref-for-dfn-path-mapping-result-1">path mapping result</a> that matches the type of the <a data-link-type="dfn|abstract-op" href="#dfn-property" class="internalDFN" id="ref-for-dfn-property-15">property</a> in the target model which is referenced by <code>propertyName</code>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-propertymapping-node" class="internalDFN" id="ref-for-dfn-propertymapping-node-3">PropertyMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>combine</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-resultcombiner-node" class="internalDFN" id="ref-for-dfn-resultcombiner-node-1">ResultCombiner node</a>. </p>
+<aside class="example" id="example-property-mapping"><div class="marker">
+    <a class="self-link" href="#example-property-mapping">Example<bdi> 5</bdi></a><span class="example-title">: property mapping</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        addressID:
+          pathMappings:
+            - path: identificatie
+        postCode:
+          pathMapping:
+            path: postcode
+</code></pre>
+</aside>
+
+</section><section id="pathmapping"><div class="header-wrapper"><h4 id="x6-2-15-pathmapping"><bdi class="secno">6.2.15 </bdi><code>PathMapping</code></h4><a class="self-link" href="#pathmapping" aria-label="Permalink for Section 6.2.15"></a></div>
+<p>A <dfn data-plurals="pathmapping nodes" id="dfn-pathmapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>PathMapping</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-9">path mapping</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">key/value pair</a>, or a <a href="https://yaml.org/spec/1.2.2/#10113-generic-string">generic string</a> <a href="https://yaml.org/spec/1.2.2/#scalar">scalar node</a>, within the <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> that is the value of the <code>pathMappings</code> key.</p>
+<p>A <dfn id="dfn-key-value-pathmapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">key-value <code>PathMapping</code> node</dfn> <em class="rfc2119">MUST</em> have one <code>paths</code> or <code>path</code> key, whose value is a <a href="https://yaml.org/spec/1.2.2/#sequence">sequence node</a> representing <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-5">path expressions</a>, or <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> representing a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-6">path expression</a> respectively.</p>
+<p>A <dfn id="dfn-string-scalar-pathmapping-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">string scalar <code>PathMapping</code> node</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-7">path expression</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-key-value-pathmapping-node" class="internalDFN" id="ref-for-dfn-key-value-pathmapping-node-1">key-value PathMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>ifMatchType</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-objecttyperef-node" class="internalDFN" id="ref-for-dfn-objecttyperef-node-5">ObjectTypeRef node</a>. When specified, this <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-10">path mapping</a> is only evaluated if the source root in the current property mapping evaluation matches. </p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-key-value-pathmapping-node" class="internalDFN" id="ref-for-dfn-key-value-pathmapping-node-2">key-value PathMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>map</code> key, whose value is a either a sequence node of <a data-link-type="dfn|abstract-op" href="#dfn-resultmapper-node" class="internalDFN" id="ref-for-dfn-resultmapper-node-1">ResultMapper nodes</a>, or a single <a data-link-type="dfn|abstract-op" href="#dfn-resultmapper-node" class="internalDFN" id="ref-for-dfn-resultmapper-node-2">ResultMapper node</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-key-value-pathmapping-node" class="internalDFN" id="ref-for-dfn-key-value-pathmapping-node-3">key-value PathMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>andThen</code> key, whose value is either a sequence node of <a data-link-type="dfn|abstract-op" href="#dfn-pathmapping-node" class="internalDFN" id="ref-for-dfn-pathmapping-node-3">PathMapping nodes</a>, or a single <a data-link-type="dfn|abstract-op" href="#dfn-pathmapping-node" class="internalDFN" id="ref-for-dfn-pathmapping-node-4">PathMapping node</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-key-value-pathmapping-node" class="internalDFN" id="ref-for-dfn-key-value-pathmapping-node-4">key-value PathMapping node</a> <em class="rfc2119">MUST</em> have zero or one <code>ifMatch</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-matcher-node" class="internalDFN" id="ref-for-dfn-matcher-node-1">Matcher node</a>.</p>
+<p>When a <a data-link-type="dfn|abstract-op" href="#dfn-pathmapping-node" class="internalDFN" id="ref-for-dfn-pathmapping-node-5">PathMapping node</a> is the value of an <code>andThen</code> key, the <code>ifMatch</code> <a data-link-type="dfn|abstract-op" href="#dfn-matcher" class="internalDFN" id="ref-for-dfn-matcher-3">matcher</a> is evaluated on the <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping-result" class="internalDFN" id="ref-for-dfn-path-mapping-result-2">path mapping result</a> of the <code>andThen</code> bearing <a data-link-type="dfn|abstract-op" href="#dfn-path-mapping" class="internalDFN" id="ref-for-dfn-path-mapping-11">path mapping</a>.</p>
+<aside class="example" id="example-path-mapping"><div class="marker">
+    <a class="self-link" href="#example-path-mapping">Example<bdi> 6</bdi></a><span class="example-title">: path mapping</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        locatorDesignator:
+          pathMappings:
+            - path: huisnummer
+            - path: huisnummertoevoeging
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
+            - path: huisletter
+              map:
+                type: prepend
+                options:
+                  prefix: ' '
+          combine:
+            type: join
+        postName:
+          pathMappings:
+            path: ligtIn/naam
+            andThen:
+              ifMatch:
+                type: isNull
+              path: ligtAan/ligtIn/naam
+</code></pre>
+</aside>
+
+</section><section id="path"><div class="header-wrapper"><h4 id="x6-2-16-path"><bdi class="secno">6.2.16 </bdi><code>Path</code></h4><a class="self-link" href="#path" aria-label="Permalink for Section 6.2.16"></a></div>
+<p>A <dfn id="dfn-path-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>Path</code> node</dfn> expresses a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-8">path</a>. It is represented by a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a>, or a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-9">path expression</a>.</p>
+<p>A property<dfn id="dfn-mappingnode-path" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>MappingNode</code>-<code>Path</code></dfn> <em class="rfc2119">MUST</em> have exactly one <code>expression</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression-node" class="internalDFN" id="ref-for-dfn-path-expression-node-1">Path expression node</a>.</p>
+<p>A <a data-link-type="dfn|abstract-op" href="#dfn-mappingnode-path" class="internalDFN" id="ref-for-dfn-mappingnode-path-1">MappingNode-Path</a> <em class="rfc2119">MUST</em> have zero or one <code>combiner</code> key, whose value is a <a data-link-type="dfn|abstract-op" href="#dfn-resultcombiner-node" class="internalDFN" id="ref-for-dfn-resultcombiner-node-2">ResultCombiner node</a>.</p>
+<p>A <dfn id="dfn-path-expression-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>Path</code> expression node</dfn> is a <a href="https://yaml.org/spec/1.2.2/#10113-generic-string">generic string</a> <a href="https://yaml.org/spec/1.2.2/#scalar">scalar node</a> that expresses a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-10">path</a>. <a data-link-type="dfn|abstract-op" href="#dfn-segment" class="internalDFN" id="ref-for-dfn-segment-3">Segments</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-path-expression" class="internalDFN" id="ref-for-dfn-path-expression-11">path</a> are separated by a <code>/</code> character.</p>
+<div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="5"><span>Issue 1</span></div><aside class="">
+Formal description of which characters are allowed in a <a data-link-type="dfn|abstract-op" href="#dfn-path-expression-node" class="internalDFN" id="ref-for-dfn-path-expression-node-2">Path expression node</a>.
+</aside></div>
+
+</section><section id="component"><div class="header-wrapper"><h4 id="x6-2-17-component"><bdi class="secno">6.2.17 </bdi><code>Component</code></h4><a class="self-link" href="#component" aria-label="Permalink for Section 6.2.17"></a></div>
+<p>A <dfn id="dfn-component-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>Component</code> node</dfn> is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> which <em class="rfc2119">MUST</em> have</p>
+<ul>
+<li>a key <code>type</code> which determines the type of the component.</li>
+<li>zero or one key <code>options</code>, whose value is a <a href="https://yaml.org/spec/1.2.2/#mapping">mapping node</a> which defines the options for the component.</li>
+</ul>
+</section><section id="resultcombiner"><div class="header-wrapper"><h4 id="x6-2-18-resultcombiner"><bdi class="secno">6.2.18 </bdi><code>ResultCombiner</code></h4><a class="self-link" href="#resultcombiner" aria-label="Permalink for Section 6.2.18"></a></div>
+<p>c
+A <dfn id="dfn-resultcombiner-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ResultCombiner</code> node</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component-node" class="internalDFN" id="ref-for-dfn-component-node-1">Component node</a>. It represents a <a data-link-type="dfn|abstract-op" href="#dfn-result-combiner" class="internalDFN" id="ref-for-dfn-result-combiner-2">result combiner</a>.</p>
+</section><section id="resultmapper"><div class="header-wrapper"><h4 id="x6-2-19-resultmapper"><bdi class="secno">6.2.19 </bdi><code>ResultMapper</code></h4><a class="self-link" href="#resultmapper" aria-label="Permalink for Section 6.2.19"></a></div>
+<p>A <dfn data-plurals="resultmapper nodes" id="dfn-resultmapper-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>ResultMapper</code> node</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component-node" class="internalDFN" id="ref-for-dfn-component-node-2">Component node</a>. It represents a <a data-link-type="dfn|abstract-op" href="#dfn-result-mapper" class="internalDFN" id="ref-for-dfn-result-mapper-2">result mapper</a>.
+ggit</p>
+<aside class="example" id="example-result-mapper"><div class="marker">
+    <a class="self-link" href="#example-result-mapper">Example<bdi> 7</bdi></a><span class="example-title">: Result mapper</span>
+  </div>
+
+<pre><code class="yaml hljs" aria-busy="false">objectTypeMappings:
+  Address:
+    - sourceRoot: bag:Nummeraanduiding
+      propertyMappings:
+        isMainAddress:
+          pathMapping:
+            path: isHoofdadresVan/identificatie
+            map: nonNull
+</code></pre>
+</aside>
+
+</section><section id="matcher"><div class="header-wrapper"><h4 id="x6-2-20-matcher"><bdi class="secno">6.2.20 </bdi><code>Matcher</code></h4><a class="self-link" href="#matcher" aria-label="Permalink for Section 6.2.20"></a></div>
+<p>A <dfn id="dfn-matcher-node" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>Matcher</code> node</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-component-node" class="internalDFN" id="ref-for-dfn-component-node-3">Component node</a>. It represents a <a data-link-type="dfn|abstract-op" href="#dfn-matcher" class="internalDFN" id="ref-for-dfn-matcher-4">matcher</a>.</p>
+</section></section></section>
+<section id="annex-1-mapping-specifications-in-excel"><div class="header-wrapper"><h2 id="x7-annex-1-mapping-specifications-in-excel"><bdi class="secno">7. </bdi>Annex-1 Mapping specifications in excel</h2><a class="self-link" href="#annex-1-mapping-specifications-in-excel" aria-label="Permalink for Section 7."></a></div>
+<p>This annex contains the mapping specifications as they are designed to map the IMX-Geo model elements to the basemodels. These mapping specifications are described in an excel spreadsheet and are the input for formulation of the machine readable YAML mapping specifications as they are developed and presented in this document. The mappings specifications furthermore are input for developing the content of the knowledge graph.</p>
+<p>The mapping specifications consist of mapping/relating information elements from the IMX-Geo model to information elements from the models of key registers or any model that is considered and included as a source model of the IMX-Geo cross domain model.</p>
+<p>Typically the mapping specifications follow this context chain: domain - objecttype - property - valuetype.</p>
+<p>The excel doc containing the mapping specifications is accesible through this link: <a href="https://github.com/Geonovum/IMX-Geo/blob/main/mapping/vertaalspecificaties.xlsx">mappingspecifications</a></p>
+<p>The excel contains a number of columns of which the content is explained in the excel itself.</p>
+</section>
+<section id="annex-2-mapping-specifications-in-yaml"><div class="header-wrapper"><h2 id="x8-annex-2-mapping-specifications-in-yaml"><bdi class="secno">8. </bdi>Annex-2 Mapping specifications in YAML</h2><a class="self-link" href="#annex-2-mapping-specifications-in-yaml" aria-label="Permalink for Section 8."></a></div>
+<p>This annex contains the mapping specifications from <a href="#annex-1-mapping-specifications-in-excel" data-matched-text="[[[#annex-1-mapping-specifications-in-excel]]]" class="sec-ref"><bdi class="secno">7. </bdi>Annex-1 Mapping specifications in excel</a> in the form of a <a data-link-type="dfn|abstract-op" href="#dfn-yaml-ixm-model-mapping-document" class="internalDFN" id="ref-for-dfn-yaml-ixm-model-mapping-document-2">YAML IXM Model Mapping document</a>.</p>
+<aside class="example" id="example-imx-geo-yaml-model-mapping"><div class="marker">
+    <a class="self-link" href="#example-imx-geo-yaml-model-mapping">Example<bdi> 8</bdi></a><span class="example-title">: IMX Geo YAML model mapping</span>
+  </div>
+
+<pre><code class="yaml">
+</code></pre>
+</aside></section>
+
+<section id="conformance"><div class="header-wrapper"><h2 id="x9-conformance"><bdi class="secno">9. </bdi>Conformance</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 9."></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MUST</em> and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p></section>
+<section id="tof"><div class="header-wrapper"><h2 id="x10-list-of-figures"><bdi class="secno">10. </bdi>List of Figures</h2><a class="self-link" href="#tof" aria-label="Permalink for Section 10."></a></div><ul class="tof">
+        <li class="tofline">
+    <a class="tocxref" href="#fig-imx-orchestration"><span class="self-link">Figure <bdi class="figno">1</bdi></span> <span class="fig-title">IMX Orchestration</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-model-representation-for-orchestration"><span class="self-link">Figure <bdi class="figno">2</bdi></span> <span class="fig-title">Model representation for orchestration</span></a>
+  </li><li class="tofline">
+    <a class="tocxref" href="#fig-imx-model-mapping"><span class="self-link">Figure <bdi class="figno">3</bdi></span> <span class="fig-title">IMX Model Mapping</span></a>
+  </li>
+      </ul></section>
+<section id="index" class="appendix"><div class="header-wrapper"><h2 id="a-index"><bdi class="secno">A. </bdi>Index</h2><a class="self-link" href="#index" aria-label="Permalink for Appendix A."></a></div><section id="index-defined-here">
+    <div class="header-wrapper"><h3 id="a-1-terms-defined-by-this-specification"><bdi class="secno">A.1 </bdi>Terms defined by this specification</h3><a class="self-link" href="#index-defined-here" aria-label="Permalink for Appendix A.1"></a></div>
+    <ul class="index">
+    <li>
+      <a class="index-term" href="#dfn-attribute">attribute</a> 
+    <span class="print-only">§4.5.3</span></li><li>
+      <a class="index-term" href="#dfn-component">component</a> 
+    <span class="print-only">§5.13</span></li><li>
+      <a class="index-term" href="#dfn-component-node">Component node</a> 
+    <span class="print-only">§6.2.17</span></li><li>
+      <a class="index-term" href="#dfn-data-object">data object</a> 
+    <span class="print-only">§4.1</span></li><li>
+      <a class="index-term" href="#dfn-data-source">data source</a> 
+    <span class="print-only">§3.</span></li><li>
+      <a class="index-term" href="#dfn-filter-mapping">filter mapping</a> 
+    <span class="print-only">§4.3</span></li><li>
+      <a class="index-term" href="#dfn-operator">filter operator</a> 
+    <span class="print-only">§4.4</span></li><li>
+      <a class="index-term" href="#dfn-filtermapping-node">FilterMapping node</a> 
+    <span class="print-only">§6.2.8</span></li><li>
+      <a class="index-term" href="#dfn-filteroperator-node">FilterOperator node</a> 
+    <span class="print-only">§6.2.9</span></li><li>
+      <a class="index-term" href="#dfn-geometry-type">geometry type</a> 
+    <span class="print-only">§4.6.2</span></li><li>
+      <a class="index-term" href="#dfn-imx-orchestration-engine">IMX orchestration engine</a> 
+    <span class="print-only">§3.</span></li><li>
+      <a class="index-term" href="#dfn-orchestration-process">IMX orchestration process</a> 
+    <span class="print-only">§3.</span></li><li>
+      <a class="index-term" href="#dfn-key-value-pathmapping-node">key-value PathMapping node</a> 
+    <span class="print-only">§6.2.15</span></li><li>
+      <a class="index-term" href="#dfn-keymapping-node">KeyMapping node</a> 
+    <span class="print-only">§6.2.7</span></li><li>
+      <a class="index-term" href="#dfn-mappingnode-path">MappingNode-Path</a> 
+    <span class="print-only">§6.2.16</span></li><li>
+      <a class="index-term" href="#dfn-matcher">matcher</a> 
+    <span class="print-only">§5.13.3</span></li><li>
+      <a class="index-term" href="#dfn-matcher-node">Matcher node</a> 
+    <span class="print-only">§6.2.20</span></li><li>
+      <a class="index-term" href="#dfn-model">model</a> 
+    <span class="print-only">§4.1</span></li><li>
+      <a class="index-term" href="#dfn-alias">model alias</a> 
+    <span class="print-only">§5.4</span></li><li>
+      <a class="index-term" href="#dfn-imx-model-mapping">model mapping</a> 
+    <span class="print-only">§5.3</span></li><li>
+      <a class="index-term" href="#dfn-modelmapping-node">ModelMapping node</a> 
+    <span class="print-only">§6.2.1</span></li><li>
+      <a class="index-term" href="#dfn-modelreference-node">ModelReference node</a> 
+    <span class="print-only">§6.2.4</span></li><li>
+      <a class="index-term" href="#dfn-multiplicity">multiplicity</a> 
+    <span class="print-only">§4.5.1</span></li><li>
+      <a class="index-term" href="#dfn-object">object</a> 
+    <span class="print-only">§4.1</span></li><li>
+      <a class="index-term" href="#dfn-object-type">object type</a> 
+    <span class="print-only">§4.2</span></li><li>
+      <a class="index-term" href="#dfn-object-type-mapping">object type mapping</a> 
+    <span class="print-only">§5.7</span></li><li>
+      <a class="index-term" href="#dfn-object-type-mapping-set">object type mapping set</a> 
+    <span class="print-only">§5.8</span></li><li>
+      <a class="index-term" href="#dfn-object-type-ref">object type ref</a> 
+    <span class="print-only">§5.4</span></li><li>
+      <a class="index-term" href="#dfn-objecttypemapping-node">ObjectTypeMapping node</a> 
+    <span class="print-only">§6.2.10</span></li><li>
+      <a class="index-term" href="#dfn-objecttypemappingset-node">ObjectTypeMappingSet node</a> 
+    <span class="print-only">§6.2.11</span></li><li>
+      <a class="index-term" href="#dfn-objecttyperef-node">ObjectTypeRef node</a> 
+    <span class="print-only">§6.2.13</span></li><li>
+      <a class="index-term" href="#dfn-path-expression">path</a> 
+    <span class="print-only">§5.11</span></li><li>
+      <a class="index-term" href="#dfn-path-expression-node">Path expression node</a> 
+    <span class="print-only">§6.2.16</span></li><li>
+      <a class="index-term" href="#dfn-path-mapping">path mapping</a> 
+    <span class="print-only">§5.10</span></li><li>
+      <a class="index-term" href="#dfn-path-mapping-evaluation">path mapping evaluation</a> 
+    <span class="print-only">§5.10</span></li><li>
+      <a class="index-term" href="#dfn-path-mapping-result">path mapping result</a> 
+    <span class="print-only">§5.10</span></li><li>
+      <a class="index-term" href="#dfn-path-node">Path node</a> 
+    <span class="print-only">§6.2.16</span></li><li>
+      <a class="index-term" href="#dfn-path-repeat">path repeat</a> 
+    <span class="print-only">§5.12</span></li><li>
+      <a class="index-term" href="#dfn-pathmapping-node">PathMapping node</a> 
+    <span class="print-only">§6.2.15</span></li><li>
+      <a class="index-term" href="#dfn-property">property</a> 
+    <span class="print-only">§4.5</span></li><li>
+      <a class="index-term" href="#dfn-property-mapping">property mapping</a> 
+    <span class="print-only">§5.9</span></li><li>
+      <a class="index-term" href="#dfn-property-node">Property node</a> 
+    <span class="print-only">§6.2.6</span></li><li>
+      <a class="index-term" href="#dfn-property-reference">property reference</a> 
+    <span class="print-only">§5.11</span></li><li>
+      <a class="index-term" href="#dfn-propertymapping-node">PropertyMapping node</a> 
+    <span class="print-only">§6.2.14</span></li><li>
+      <a class="index-term" href="#dfn-relation">relation</a> 
+    <span class="print-only">§4.5.2</span></li><li>
+      <a class="index-term" href="#dfn-result-combiner">result combiner</a> 
+    <span class="print-only">§5.13.1</span></li><li>
+      <a class="index-term" href="#dfn-result-mapper">result mapper</a> 
+    <span class="print-only">§5.13.2</span></li><li>
+      <a class="index-term" href="#dfn-resultcombiner-node">ResultCombiner node</a> 
+    <span class="print-only">§6.2.18</span></li><li>
+      <a class="index-term" href="#dfn-resultmapper-node">ResultMapper node</a> 
+    <span class="print-only">§6.2.19</span></li><li>
+      <a class="index-term" href="#dfn-scalar-type">scalar type</a> 
+    <span class="print-only">§4.6.1</span></li><li>
+      <a class="index-term" href="#dfn-segment">segment</a> 
+    <span class="print-only">§5.11</span></li><li>
+      <a class="index-term" href="#dfn-source-data-source">source data source</a> 
+    <span class="print-only">§3.</span></li><li>
+      <a class="index-term" href="#dfn-source-model">source model</a> 
+    <span class="print-only">§5.1</span></li><li>
+      <a class="index-term" href="#dfn-source-relation-mapping">source relation mapping</a> 
+    <span class="print-only">§5.6</span></li><li>
+      <a class="index-term" href="#dfn-source-root">source root</a> 
+    <span class="print-only">§5.5</span></li><li>
+      <a class="index-term" href="#dfn-sourcemodel-node">SourceModel node</a> 
+    <span class="print-only">§6.2.2</span></li><li>
+      <a class="index-term" href="#dfn-sourcerelation-node">SourceRelation node</a> 
+    <span class="print-only">§6.2.5</span></li><li>
+      <a class="index-term" href="#dfn-sourceroot-node">SourceRoot node</a> 
+    <span class="print-only">§6.2.12</span></li><li>
+      <a class="index-term" href="#dfn-string-scalar-pathmapping-node">string scalar PathMapping node</a> 
+    <span class="print-only">§6.2.15</span></li><li>
+      <a class="index-term" href="#dfn-target-data-source">target data source</a> 
+    <span class="print-only">§3.</span></li><li>
+      <a class="index-term" href="#dfn-target-model">target model</a> 
+    <span class="print-only">§5.2</span></li><li>
+      <a class="index-term" href="#dfn-targetmodel-node">TargetModel node</a> 
+    <span class="print-only">§6.2.3</span></li><li>
+      <a class="index-term" href="#dfn-value-type">value type</a> 
+    <span class="print-only">§4.6</span></li><li>
+      <a class="index-term" href="#dfn-yaml-ixm-model-mapping-document">YAML IXM Model Mapping document</a> 
+    <span class="print-only">§6.</span></li>
+  </ul>
+  </section><section id="index-defined-elsewhere">
+    <div class="header-wrapper"><h3 id="a-2-terms-defined-by-reference"><bdi class="secno">A.2 </bdi>Terms defined by reference</h3><a class="self-link" href="#index-defined-elsewhere" aria-label="Permalink for Appendix A.2"></a></div>
+    <ul class="index">
+    
+  </ul>
+  </section></section>
+
+
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="b-references"><bdi class="secno">B. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix B."></a></div><section id="normative-references">
+    <div class="header-wrapper"><h3 id="b-1-normative-references"><bdi class="secno">B.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix B.1"></a></div>
+    <dl class="bibliography"><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd><dt id="bib-utf-8">[UTF-8]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc3629"><cite>UTF-8, a transformation format of ISO 10646</cite></a>. F. Yergeau.  IETF. November 2003. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc3629">https://www.rfc-editor.org/rfc/rfc3629</a>
+    </dd><dt id="bib-yaml">[YAML]</dt><dd>
+      <a href="http://yaml.org/spec/1.2/spec.html"><cite>YAML Ain’t Markup Language (YAML™) Version 1.2</cite></a>. Oren Ben-Kiki; Clark Evans; Ingy döt Net. 1 October 2009. URL: <a href="http://yaml.org/spec/1.2/spec.html">http://yaml.org/spec/1.2/spec.html</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-orchestration-process" aria-label="Links in this document to definition: IMX orchestration process">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-orchestration-process" aria-label="Permalink for definition: IMX orchestration process. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-orchestration-process-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-orchestration-process-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-orchestration-process-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-orchestration-process-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-orchestration-process-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-orchestration-process-6" title="Reference 6">(6)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-orchestration-process-7" title="§ 5.1 Source model (SourceModel)">§ 5.1 Source model (SourceModel)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-orchestration-process-8" title="§ 5.2 Target model (TargetModel)">§ 5.2 Target model (TargetModel)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-orchestration-process-9" title="§ 5.4 Object type ref (ObjectTypeRef)">§ 5.4 Object type ref (ObjectTypeRef)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-imx-orchestration-engine" aria-label="Links in this document to definition: IMX orchestration engine">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-imx-orchestration-engine" aria-label="Permalink for definition: IMX orchestration engine. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-imx-orchestration-engine-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> 
+  </li><li>
+    <a href="#ref-for-dfn-imx-orchestration-engine-2" title="§ 4.1 Model (Model)">§ 4.1 Model (Model)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-data-source" aria-label="Links in this document to definition: data source">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-data-source" aria-label="Permalink for definition: data source. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-data-source-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-data-source-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-source-data-source" aria-label="Links in this document to definition: source data source">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-source-data-source" aria-label="Permalink for definition: source data source. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-source-data-source-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-source-data-source-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-data-source-3" title="§ 5.1 Source model (SourceModel)">§ 5.1 Source model (SourceModel)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-data-source-4" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-data-source-5" title="§ 5.11 Path (Path)">§ 5.11 Path (Path)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-target-data-source" aria-label="Links in this document to definition: target data source">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-target-data-source" aria-label="Permalink for definition: target data source. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-target-data-source-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-target-data-source-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-target-data-source-3" title="§ 5.2 Target model (TargetModel)">§ 5.2 Target model (TargetModel)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-model" aria-label="Links in this document to definition: model">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-model" aria-label="Permalink for definition: model. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-model-1" title="§ 5.1 Source model (SourceModel)">§ 5.1 Source model (SourceModel)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-model-2" title="§ 5.2 Target model (TargetModel)">§ 5.2 Target model (TargetModel)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-object" aria-label="Links in this document to definition: object">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-object" aria-label="Permalink for definition: object. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-object-1" title="§ 4.1 Model (Model)">§ 4.1 Model (Model)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-2" title="§ 4.2 Object type (ObjectType)">§ 4.2 Object type (ObjectType)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-3" title="§ 4.5 Property (Property)">§ 4.5 Property (Property)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-4" title="§ 4.5.2 Relation (Relation)">§ 4.5.2 Relation (Relation)</a> <a href="#ref-for-dfn-object-5" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-6" title="§ 4.5.3 Attribute (Attribute)">§ 4.5.3 Attribute (Attribute)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-data-object" aria-label="Links in this document to definition: data object">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-data-object" aria-label="Permalink for definition: data object. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-data-object-1" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-data-object-2" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-object-type" aria-label="Links in this document to definition: object type">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-object-type" aria-label="Permalink for definition: object type. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-object-type-1" title="§ 4.1 Model (Model)">§ 4.1 Model (Model)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-2" title="§ 4.3 Filter mapping (FilterMapping)">§ 4.3 Filter mapping (FilterMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-3" title="§ 4.5.2 Relation (Relation)">§ 4.5.2 Relation (Relation)</a> <a href="#ref-for-dfn-object-type-4" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-5" title="§ 5.4 Object type ref (ObjectTypeRef)">§ 5.4 Object type ref (ObjectTypeRef)</a> <a href="#ref-for-dfn-object-type-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-object-type-7" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-8" title="§ 5.7 Object type mapping (ObjectTypeMapping)">§ 5.7 Object type mapping (ObjectTypeMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-9" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-10" title="§ 6.2.6 Property">§ 6.2.6 Property</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-11" title="§ 6.2.13 ObjectTypeRef">§ 6.2.13 ObjectTypeRef</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-filter-mapping" aria-label="Links in this document to definition: filter mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-filter-mapping" aria-label="Permalink for definition: filter mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-filter-mapping-1" title="§ 4.5.2 Relation (Relation)">§ 4.5.2 Relation (Relation)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-filter-mapping-2" title="§ 6.2.8 FilterMapping">§ 6.2.8 FilterMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-operator" aria-label="Links in this document to definition: filter operator">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-operator" aria-label="Permalink for definition: filter operator. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-operator-1" title="§ 4.3 Filter mapping (FilterMapping)">§ 4.3 Filter mapping (FilterMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-operator-2" title="§ 6.2.9 FilterOperator">§ 6.2.9 FilterOperator</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-property" aria-label="Links in this document to definition: property">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-property" aria-label="Permalink for definition: property. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-property-1" title="§ 4.2 Object type (ObjectType)">§ 4.2 Object type (ObjectType)</a> <a href="#ref-for-dfn-property-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-3" title="§ 4.3 Filter mapping (FilterMapping)">§ 4.3 Filter mapping (FilterMapping)</a> <a href="#ref-for-dfn-property-4" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-5" title="§ 4.5.1 Multiplicity (Multiplicity)">§ 4.5.1 Multiplicity (Multiplicity)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-6" title="§ 4.5.2 Relation (Relation)">§ 4.5.2 Relation (Relation)</a> <a href="#ref-for-dfn-property-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-property-8" title="Reference 3">(3)</a> <a href="#ref-for-dfn-property-9" title="Reference 4">(4)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-10" title="§ 4.5.3 Attribute (Attribute)">§ 4.5.3 Attribute (Attribute)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-11" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> <a href="#ref-for-dfn-property-12" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-13" title="§ 5.11 Path (Path)">§ 5.11 Path (Path)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-14" title="§ 6.2.6 Property">§ 6.2.6 Property</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-15" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-multiplicity" aria-label="Links in this document to definition: multiplicity">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-multiplicity" aria-label="Permalink for definition: multiplicity. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-multiplicity-1" title="§ 4.5 Property (Property)">§ 4.5 Property (Property)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-relation" aria-label="Links in this document to definition: relation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-relation" aria-label="Permalink for definition: relation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-relation-1" title="§ 4.5.2 Relation (Relation)">§ 4.5.2 Relation (Relation)</a> <a href="#ref-for-dfn-relation-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-relation-3" title="§ 5.6 Source relation mapping (SourceRelationMapping)">§ 5.6 Source relation mapping (SourceRelationMapping)</a> <a href="#ref-for-dfn-relation-4" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-relation-5" title="§ 6.2.6 Property">§ 6.2.6 Property</a> <a href="#ref-for-dfn-relation-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-relation-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-relation-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-relation-9" title="Reference 5">(5)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-attribute" aria-label="Links in this document to definition: attribute">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-attribute" aria-label="Permalink for definition: attribute. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-attribute-1" title="§ 4.6 Value type (ValueType)">§ 4.6 Value type (ValueType)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-value-type" aria-label="Links in this document to definition: value type">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-value-type" aria-label="Permalink for definition: value type. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-value-type-1" title="§ 4.5.3 Attribute (Attribute)">§ 4.5.3 Attribute (Attribute)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-value-type-2" title="§ 4.6.1 Scalar type (ScalarType)">§ 4.6.1 Scalar type (ScalarType)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-value-type-3" title="§ 4.6.2 Geometry type (GeometryType)">§ 4.6.2 Geometry type (GeometryType)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-scalar-type" aria-label="Links in this document to definition: scalar type">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-scalar-type" aria-label="Permalink for definition: scalar type. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-geometry-type" aria-label="Links in this document to definition: geometry type">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-geometry-type" aria-label="Permalink for definition: geometry type. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-source-model" aria-label="Links in this document to definition: source model">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-source-model" aria-label="Permalink for definition: source model. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-source-model-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-source-model-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-3" title="§ 4. Representing models for orchestration">§ 4. Representing models for orchestration</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-4" title="§ 5.3 Model mapping (ModelMapping)">§ 5.3 Model mapping (ModelMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-5" title="§ 5.4 Object type ref (ObjectTypeRef)">§ 5.4 Object type ref (ObjectTypeRef)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-6" title="§ 5.7 Object type mapping (ObjectTypeMapping)">§ 5.7 Object type mapping (ObjectTypeMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-7" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-8" title="§ 6.2.2 SourceModel">§ 6.2.2 SourceModel</a> <a href="#ref-for-dfn-source-model-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-source-model-10" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-model-11" title="§ 6.2.13 ObjectTypeRef">§ 6.2.13 ObjectTypeRef</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-target-model" aria-label="Links in this document to definition: target model">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-target-model" aria-label="Permalink for definition: target model. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-target-model-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-target-model-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-target-model-3" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-target-model-4" title="§ 5.3 Model mapping (ModelMapping)">§ 5.3 Model mapping (ModelMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-target-model-5" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-target-model-6" title="§ 6.2.3 TargetModel">§ 6.2.3 TargetModel</a> <a href="#ref-for-dfn-target-model-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-target-model-8" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-imx-model-mapping" aria-label="Links in this document to definition: model mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-imx-model-mapping" aria-label="Permalink for definition: model mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-imx-model-mapping-1" title="§ 3. Basic concepts">§ 3. Basic concepts</a> <a href="#ref-for-dfn-imx-model-mapping-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-imx-model-mapping-3" title="§ 4. Representing models for orchestration">§ 4. Representing models for orchestration</a> 
+  </li><li>
+    <a href="#ref-for-dfn-imx-model-mapping-4" title="§ 6. YAML IMX Model Mapping specification">§ 6. YAML IMX Model Mapping specification</a> 
+  </li><li>
+    <a href="#ref-for-dfn-imx-model-mapping-5" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-object-type-ref" aria-label="Links in this document to definition: object type ref">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-object-type-ref" aria-label="Permalink for definition: object type ref. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-object-type-ref-1" title="§ 5.5 Source root (SourceRoot)">§ 5.5 Source root (SourceRoot)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-ref-2" title="§ 5.6 Source relation mapping (SourceRelationMapping)">§ 5.6 Source relation mapping (SourceRelationMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-ref-3" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-ref-4" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-ref-5" title="§ 6.2.13 ObjectTypeRef">§ 6.2.13 ObjectTypeRef</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-alias" aria-label="Links in this document to definition: model alias">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-alias" aria-label="Permalink for definition: model alias. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-alias-1" title="§ 5.4 Object type ref (ObjectTypeRef)">§ 5.4 Object type ref (ObjectTypeRef)</a> <a href="#ref-for-dfn-alias-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-alias-3" title="§ 6.2.2 SourceModel">§ 6.2.2 SourceModel</a> 
+  </li><li>
+    <a href="#ref-for-dfn-alias-4" title="§ 6.2.3 TargetModel">§ 6.2.3 TargetModel</a> 
+  </li><li>
+    <a href="#ref-for-dfn-alias-5" title="§ 6.2.13 ObjectTypeRef">§ 6.2.13 ObjectTypeRef</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-source-root" aria-label="Links in this document to definition: source root">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-source-root" aria-label="Permalink for definition: source root. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-source-root-1" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-root-2" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-root-3" title="§ 6.2.12 SourceRoot">§ 6.2.12 SourceRoot</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-source-relation-mapping" aria-label="Links in this document to definition: source relation mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-source-relation-mapping" aria-label="Permalink for definition: source relation mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-source-relation-mapping-1" title="§ 5.3 Model mapping (ModelMapping)">§ 5.3 Model mapping (ModelMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-relation-mapping-2" title="§ 5.6 Source relation mapping (SourceRelationMapping)">§ 5.6 Source relation mapping (SourceRelationMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-relation-mapping-3" title="§ 6.2.5 SourceRelation">§ 6.2.5 SourceRelation</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-relation-mapping-4" title="§ 6.2.7 KeyMapping">§ 6.2.7 KeyMapping</a> <a href="#ref-for-dfn-source-relation-mapping-5" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-source-relation-mapping-6" title="§ 6.2.8 FilterMapping">§ 6.2.8 FilterMapping</a> <a href="#ref-for-dfn-source-relation-mapping-7" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-object-type-mapping" aria-label="Links in this document to definition: object type mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-object-type-mapping" aria-label="Permalink for definition: object type mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-object-type-mapping-1" title="§ 5.3 Model mapping (ModelMapping)">§ 5.3 Model mapping (ModelMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-mapping-2" title="§ 5.6 Source relation mapping (SourceRelationMapping)">§ 5.6 Source relation mapping (SourceRelationMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-mapping-3" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-mapping-4" title="§ 6.2.10 ObjectTypeMapping">§ 6.2.10 ObjectTypeMapping</a> <a href="#ref-for-dfn-object-type-mapping-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-object-type-mapping-6" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-object-type-mapping-set" aria-label="Links in this document to definition: object type mapping set">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-object-type-mapping-set" aria-label="Permalink for definition: object type mapping set. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-object-type-mapping-set-1" title="§ 5.7 Object type mapping (ObjectTypeMapping)">§ 5.7 Object type mapping (ObjectTypeMapping)</a> <a href="#ref-for-dfn-object-type-mapping-set-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-mapping-set-3" title="§ 6.2.10 ObjectTypeMapping">§ 6.2.10 ObjectTypeMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-object-type-mapping-set-4" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-property-mapping" aria-label="Links in this document to definition: property mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-property-mapping" aria-label="Permalink for definition: property mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-property-mapping-1" title="§ 5.8 Object type mapping set (ObjectTypeMappingSet)">§ 5.8 Object type mapping set (ObjectTypeMappingSet)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-mapping-2" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-mapping-3" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-property-mapping-4" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> <a href="#ref-for-dfn-property-mapping-5" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-mapping" aria-label="Links in this document to definition: path mapping">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-mapping" aria-label="Permalink for definition: path mapping. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-mapping-1" title="§ 5.3 Model mapping (ModelMapping)">§ 5.3 Model mapping (ModelMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-2" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> <a href="#ref-for-dfn-path-mapping-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-path-mapping-4" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-5" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> <a href="#ref-for-dfn-path-mapping-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-path-mapping-7" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-8" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-9" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> <a href="#ref-for-dfn-path-mapping-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-path-mapping-11" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-mapping-evaluation" aria-label="Links in this document to definition: path mapping evaluation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-mapping-evaluation" aria-label="Permalink for definition: path mapping evaluation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-mapping-evaluation-1" title="§ 5.12 Path repeat (PathRepeat)">§ 5.12 Path repeat (PathRepeat)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-evaluation-2" title="§ 5.13 Component (Component)">§ 5.13 Component (Component)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-evaluation-3" title="§ 5.13.2 Result mapper (ResultMapper)">§ 5.13.2 Result mapper (ResultMapper)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-evaluation-4" title="§ 5.13.3 Matcher (ResultMatcher)">§ 5.13.3 Matcher (ResultMatcher)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-mapping-result" aria-label="Links in this document to definition: path mapping result">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-mapping-result" aria-label="Permalink for definition: path mapping result. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-mapping-result-1" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-mapping-result-2" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-expression" aria-label="Links in this document to definition: path">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-expression" aria-label="Permalink for definition: path. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-expression-1" title="§ 4.3 Filter mapping (FilterMapping)">§ 4.3 Filter mapping (FilterMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-expression-2" title="§ 5.5 Source root (SourceRoot)">§ 5.5 Source root (SourceRoot)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-expression-3" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-expression-4" title="§ 5.11 Path (Path)">§ 5.11 Path (Path)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-expression-5" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> <a href="#ref-for-dfn-path-expression-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-path-expression-7" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-path-expression-8" title="§ 6.2.16 Path">§ 6.2.16 Path</a> <a href="#ref-for-dfn-path-expression-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-path-expression-10" title="Reference 3">(3)</a> <a href="#ref-for-dfn-path-expression-11" title="Reference 4">(4)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-segment" aria-label="Links in this document to definition: segment">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-segment" aria-label="Permalink for definition: segment. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-segment-1" title="§ 5.11 Path (Path)">§ 5.11 Path (Path)</a> <a href="#ref-for-dfn-segment-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-segment-3" title="§ 6.2.16 Path">§ 6.2.16 Path</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-property-reference" aria-label="Links in this document to definition: property reference">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-property-reference" aria-label="Permalink for definition: property reference. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-property-reference-1" title="§ 5.11 Path (Path)">§ 5.11 Path (Path)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-repeat" aria-label="Links in this document to definition: path repeat">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-repeat" aria-label="Permalink for definition: path repeat. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-repeat-1" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-component" aria-label="Links in this document to definition: component">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-component" aria-label="Permalink for definition: component. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-component-1" title="§ 5.13.1 Result combiner (ResultCombiner)">§ 5.13.1 Result combiner (ResultCombiner)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-component-2" title="§ 5.13.2 Result mapper (ResultMapper)">§ 5.13.2 Result mapper (ResultMapper)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-component-3" title="§ 5.13.3 Matcher (ResultMatcher)">§ 5.13.3 Matcher (ResultMatcher)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-result-combiner" aria-label="Links in this document to definition: result combiner">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-result-combiner" aria-label="Permalink for definition: result combiner. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-result-combiner-1" title="§ 5.9 Property mapping (PropertyMapping)">§ 5.9 Property mapping (PropertyMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-result-combiner-2" title="§ 6.2.18 ResultCombiner">§ 6.2.18 ResultCombiner</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-result-mapper" aria-label="Links in this document to definition: result mapper">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-result-mapper" aria-label="Permalink for definition: result mapper. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-result-mapper-1" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-result-mapper-2" title="§ 6.2.19 ResultMapper">§ 6.2.19 ResultMapper</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-matcher" aria-label="Links in this document to definition: matcher">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-matcher" aria-label="Permalink for definition: matcher. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-matcher-1" title="§ 5.10 Path mapping (PathMapping)">§ 5.10 Path mapping (PathMapping)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-matcher-2" title="§ 5.12 Path repeat (PathRepeat)">§ 5.12 Path repeat (PathRepeat)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-matcher-3" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-matcher-4" title="§ 6.2.20 Matcher">§ 6.2.20 Matcher</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-yaml-ixm-model-mapping-document" aria-label="Links in this document to definition: YAML IXM Model Mapping document">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-yaml-ixm-model-mapping-document" aria-label="Permalink for definition: YAML IXM Model Mapping document. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-yaml-ixm-model-mapping-document-1" title="§ 6.1 Encoding">§ 6.1 Encoding</a> 
+  </li><li>
+    <a href="#ref-for-dfn-yaml-ixm-model-mapping-document-2" title="§ 8. Annex-2 Mapping specifications in YAML">§ 8. Annex-2 Mapping specifications in YAML</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-modelmapping-node" aria-label="Links in this document to definition: ModelMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-modelmapping-node" aria-label="Permalink for definition: ModelMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-modelmapping-node-1" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> <a href="#ref-for-dfn-modelmapping-node-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-modelmapping-node-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-modelmapping-node-4" title="Reference 4">(4)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-sourcemodel-node" aria-label="Links in this document to definition: SourceModel node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-sourcemodel-node" aria-label="Permalink for definition: SourceModel node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-sourcemodel-node-1" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-targetmodel-node" aria-label="Links in this document to definition: TargetModel node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-targetmodel-node" aria-label="Permalink for definition: TargetModel node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-targetmodel-node-1" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-modelreference-node" aria-label="Links in this document to definition: ModelReference node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-modelreference-node" aria-label="Permalink for definition: ModelReference node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-modelreference-node-1" title="§ 6.2.2 SourceModel">§ 6.2.2 SourceModel</a> 
+  </li><li>
+    <a href="#ref-for-dfn-modelreference-node-2" title="§ 6.2.3 TargetModel">§ 6.2.3 TargetModel</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-sourcerelation-node" aria-label="Links in this document to definition: SourceRelation node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-sourcerelation-node" aria-label="Permalink for definition: SourceRelation node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-sourcerelation-node-1" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-property-node" aria-label="Links in this document to definition: Property node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-property-node" aria-label="Permalink for definition: Property node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-property-node-1" title="§ 6.2.5 SourceRelation">§ 6.2.5 SourceRelation</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-keymapping-node" aria-label="Links in this document to definition: KeyMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-keymapping-node" aria-label="Permalink for definition: KeyMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-keymapping-node-1" title="§ 6.2.6 Property">§ 6.2.6 Property</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-filtermapping-node" aria-label="Links in this document to definition: FilterMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-filtermapping-node" aria-label="Permalink for definition: FilterMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-filtermapping-node-1" title="§ 6.2.6 Property">§ 6.2.6 Property</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-filteroperator-node" aria-label="Links in this document to definition: FilterOperator node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-filteroperator-node" aria-label="Permalink for definition: FilterOperator node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-filteroperator-node-1" title="§ 6.2.8 FilterMapping">§ 6.2.8 FilterMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-objecttypemapping-node" aria-label="Links in this document to definition: ObjectTypeMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-objecttypemapping-node" aria-label="Permalink for definition: ObjectTypeMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-objecttypemapping-node-1" title="§ 6.2.1 ModelMapping">§ 6.2.1 ModelMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttypemapping-node-2" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-objecttypemappingset-node" aria-label="Links in this document to definition: ObjectTypeMappingSet node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-objecttypemappingset-node" aria-label="Permalink for definition: ObjectTypeMappingSet node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-objecttypemappingset-node-1" title="§ 6.2.10 ObjectTypeMapping">§ 6.2.10 ObjectTypeMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttypemappingset-node-2" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-sourceroot-node" aria-label="Links in this document to definition: SourceRoot node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-sourceroot-node" aria-label="Permalink for definition: SourceRoot node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-sourceroot-node-1" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-objecttyperef-node" aria-label="Links in this document to definition: ObjectTypeRef node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-objecttyperef-node" aria-label="Permalink for definition: ObjectTypeRef node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-objecttyperef-node-1" title="§ 6.2.5 SourceRelation">§ 6.2.5 SourceRelation</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttyperef-node-2" title="§ 6.2.6 Property">§ 6.2.6 Property</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttyperef-node-3" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttyperef-node-4" title="§ 6.2.12 SourceRoot">§ 6.2.12 SourceRoot</a> 
+  </li><li>
+    <a href="#ref-for-dfn-objecttyperef-node-5" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-propertymapping-node" aria-label="Links in this document to definition: PropertyMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-propertymapping-node" aria-label="Permalink for definition: PropertyMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-propertymapping-node-1" title="§ 6.2.11 ObjectTypeMappingSet">§ 6.2.11 ObjectTypeMappingSet</a> 
+  </li><li>
+    <a href="#ref-for-dfn-propertymapping-node-2" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> <a href="#ref-for-dfn-propertymapping-node-3" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-pathmapping-node" aria-label="Links in this document to definition: PathMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-pathmapping-node" aria-label="Permalink for definition: PathMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-pathmapping-node-1" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> <a href="#ref-for-dfn-pathmapping-node-2" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-pathmapping-node-3" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> <a href="#ref-for-dfn-pathmapping-node-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-pathmapping-node-5" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-key-value-pathmapping-node" aria-label="Links in this document to definition: key-value PathMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-key-value-pathmapping-node" aria-label="Permalink for definition: key-value PathMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-key-value-pathmapping-node-1" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> <a href="#ref-for-dfn-key-value-pathmapping-node-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-key-value-pathmapping-node-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-key-value-pathmapping-node-4" title="Reference 4">(4)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-string-scalar-pathmapping-node" aria-label="Links in this document to definition: string scalar PathMapping node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-string-scalar-pathmapping-node" aria-label="Permalink for definition: string scalar PathMapping node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-node" aria-label="Links in this document to definition: Path node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-node" aria-label="Permalink for definition: Path node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-node-1" title="§ 6.2.8 FilterMapping">§ 6.2.8 FilterMapping</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mappingnode-path" aria-label="Links in this document to definition: MappingNode-Path">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-mappingnode-path" aria-label="Permalink for definition: MappingNode-Path. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-mappingnode-path-1" title="§ 6.2.16 Path">§ 6.2.16 Path</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-path-expression-node" aria-label="Links in this document to definition: Path expression node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-path-expression-node" aria-label="Permalink for definition: Path expression node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-path-expression-node-1" title="§ 6.2.16 Path">§ 6.2.16 Path</a> <a href="#ref-for-dfn-path-expression-node-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-component-node" aria-label="Links in this document to definition: Component node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-component-node" aria-label="Permalink for definition: Component node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-component-node-1" title="§ 6.2.18 ResultCombiner">§ 6.2.18 ResultCombiner</a> 
+  </li><li>
+    <a href="#ref-for-dfn-component-node-2" title="§ 6.2.19 ResultMapper">§ 6.2.19 ResultMapper</a> 
+  </li><li>
+    <a href="#ref-for-dfn-component-node-3" title="§ 6.2.20 Matcher">§ 6.2.20 Matcher</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-resultcombiner-node" aria-label="Links in this document to definition: ResultCombiner node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-resultcombiner-node" aria-label="Permalink for definition: ResultCombiner node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-resultcombiner-node-1" title="§ 6.2.14 PropertyMapping">§ 6.2.14 PropertyMapping</a> 
+  </li><li>
+    <a href="#ref-for-dfn-resultcombiner-node-2" title="§ 6.2.16 Path">§ 6.2.16 Path</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-resultmapper-node" aria-label="Links in this document to definition: ResultMapper node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-resultmapper-node" aria-label="Permalink for definition: ResultMapper node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-resultmapper-node-1" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> <a href="#ref-for-dfn-resultmapper-node-2" title="Reference 2">(2)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-matcher-node" aria-label="Links in this document to definition: Matcher node">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-matcher-node" aria-label="Permalink for definition: Matcher node. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-matcher-node-1" title="§ 6.2.15 PathMapping">§ 6.2.15 PathMapping</a> 
+  </li>
+  </ul>
+    </div><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><div class="sidelabel">Geonovum Standard - Proposed recommendation</div><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
