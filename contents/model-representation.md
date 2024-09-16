@@ -80,7 +80,7 @@ _Overview attributes_
 |---------------|--------------|-------------------------------------------------|
 | name          | 1..1         | The name of the property.                       |
 | isIdentifier  | 1..1         | Indication whether the property is identifying. |
-| multiplicity  | 1..1         | The [=multiplicity=] of the property.            |
+| multiplicity  | 1..1         | The [=multiplicity=] of the property.           |
 
 ### Multiplicity (`Multiplicity`)
 
@@ -100,11 +100,11 @@ A <dfn>relation</dfn> is a [=property=] which expresses a relationship between t
 
 _Overview attributes_
 
-| Name               | Multiplicity | Definition                                                                                                                    |
-|--------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------|
-| inverseName        | 1..1         | The inverse name of the [=relation=], to be used to traverse the relation in the inverse direction.                           |
-| inverseCardinality | 1..1         | The inverse cardinality of the [=relation=].                                                                                  |
-| keyMapping         | 0..1         | A map (String -> Object) defining the mapping the source [=object type=] key [=properties=] to the target key [=properties=]. |
+| Name                | Multiplicity | Definition                                                                                                                    |
+|---------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------|
+| inverseName         | 1..1         | The inverse name of the [=relation=], to be used to traverse the relation in the inverse direction.                           |
+| inverseMultiplicity | 1..1         | The inverse multiplicity of the [=relation=].                                                                                 |
+| keyMapping          | 0..1         | A map (String -> Object) defining the mapping the source [=object type=] key [=properties=] to the target key [=properties=]. |
 
 _Overview relations_
 

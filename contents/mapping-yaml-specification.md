@@ -83,11 +83,11 @@ It MUST have a `name` key with a string value representing the name of the [=rel
 
 It MUST have a `target` key with an [=ObjectTypeRef node=] value, representing the target [=object type=] of the [=relation=].
 
-It MUST have a `cardinality` key with a valid cardinality string value.
+It MUST have a `multiplicity` key with a valid multiplicity string value.
 
 It MUST have an `inverseName` key with a string value representing the inverse name of the [=relation=].
 
-It MUST have an `inverseCardinality` key with a string value representing the inverse cardinality of the [=relation=].
+It MUST have an `inverseMultiplicity` key with a string value representing the inverse multiplicity of the [=relation=].
 
 It MUST either have:
 * a `keyMapping` key whose value is a [=KeyMapping node=].
