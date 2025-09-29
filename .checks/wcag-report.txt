@@ -1,0 +1,7 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL file:///home/runner/work/IMX-ModelMapping/IMX-ModelMapping/snapshot.html
+
+No issues found!
+
